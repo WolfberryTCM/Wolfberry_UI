@@ -105,7 +105,7 @@ For more information on botanical (plant) dietary supplements on the Office of D
 
 TCM was included in the International Classification of Diseases for the first time during the 72nd World Health Assembly Revision. It has spread to 183 countries and regions and 67 governments in the world have recognized its legal status.
 
-### Difference between Western medicine and TCM:
+### Difference between Western medicine and TCM
 
 TCM is based on a holistic view of the human body and disease, which always sees the big picture and proves useful in treating chronic diseases and serving aged people in particular. Western medicine generally aims to isolate the cause of disease and treat that directly, while TCM has a holistic approach, perhaps similar to the recent Western concept of wellness.
 
