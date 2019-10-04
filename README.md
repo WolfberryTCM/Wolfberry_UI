@@ -1,3 +1,61 @@
+## Goal:
+
+To build an online TCM community where people could find interesting facts about TCM, doctors could share their knowledge and manage their patients, and this two part could connect with each other through tele-medicine.
+
+### Find interesting facts
+
+1. A Search Bar
+
+There should be a search bar at the top of main page.
+
+Search Symptoms/herbs/recipe/doctors/locations/...
+
+Show detail information about the search
+
+> Say, definition, Symptoms and accompanying symptoms, Cause ...
+> Show related articles
+> Say suggestions how to handle these symptoms
+> Show Recipe
+> Different recipe for different age or sex user
+> Show doctors
+> Show doctors that are good at handling related symptoms or nearby
+
+2. A List of Articles
+
+This list will be updated daily.
+
+User will receive an email notice everyday about the update of the reading list.
+
+> Recommend related articles based on user interests and search
+
+> Top popular articles
+
+### Share knowledge
+
+TCM experts or other content contributors could post article.
+
+Users could share, save or comments these articles.
+
+The comments come from experts should be at conspicuous position.
+
+### Manage patients
+
+....
+
+### Tele-medicine
+
+## Difficulties:
+
+1. How to translate traditional medical related names and terms.
+
+2. Low frequency, high customer cost.
+
+## Business Logic
+
+### Get TCM doctors first
+
+Senior Chinese medicine practitioners often bring their own patient groups. Only in the absence of a suitable platform, doctors and patients can only communicate easily through emails or other social media. Now they could just transfer these communication to the platform of our community.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
