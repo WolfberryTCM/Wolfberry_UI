@@ -1,10 +1,10 @@
-## Goal
+# Goal
 
 To build an online TCM community where normal users could find interesting and accurate information about TCM, doctor users could share their knowledge and manage their patients, and this two part users could connect with each other through tele-medicine.
 
-### Find interesting information
+## Find interesting information
 
-- A Search Bar
+### A Search Bar
 
 There should be a search bar at the top of main page.
 
@@ -12,37 +12,34 @@ Search Symptoms/herbs/recipe/doctors/locations/...
 
 Show detail information about the search
 
-> Say, definition, Symptoms and accompanying symptoms, Cause ...
+- Say, definition, Symptoms and accompanying symptoms, Cause ...
+- Related articles, like suggestions how to handle these symptoms
+- TCM botanical dietary supplements(Could see the detail information of each ingredient and click to purchase)
+- Doctors that are good at handling related symptoms
 
-> Related articles, like suggestions how to handle these symptoms
-
-> TCM botanical dietary supplements(Could see the detail information of each ingredient and click to purchase)
-
-> Doctors that are good at handling related symptoms
-
-- A List of Articles
+* A List of Articles
 
 This list will be updated daily.
 
 User will receive an email notice everyday about the update of the reading list.
 
-> Articles about problem that users want to resolve when they registered
+- Articles about problem that users want to resolve when they registered
 
-> Recommend related articles based on user interests and search
+- Recommend related articles based on user interests and search
 
-> Top popular articles
+- Top popular articles
 
-- Category of health problems that could be handled by TCM
+### Category of health problems that could be handled by TCM
 
-- Category of herbs
+### Category of herbs
 
 For more information about specific herbs, see Herbs at a Glance Web page(Link: https://nccih.nih.gov/health/herbsataglance.htm)
 
-- Category of botanical dietary supplements
+### Category of botanical dietary supplements
 
 For more information on botanical (plant) dietary supplements on the Office of Dietary Supplements Web site. (Link:https://ods.od.nih.gov/factsheets/BotanicalBackground-HealthProfessional/)
 
-### Share knowledge
+## Share knowledge
 
 - TCM experts or other content contributors could post article.
 
@@ -50,14 +47,14 @@ For more information on botanical (plant) dietary supplements on the Office of D
 
 - The comments come from experts should be at conspicuous position.
 
-### Manage patients
+## Manage patients
 
 - Make appointment.
 - Every time before consultation, client need to fill a questionnaire based on the “Ten Questions of Chinese Medicine”. This could save doctors' consultation time and improve efficiency.
 - Log treatment history(the symptom of patients and prescription given during every consultation).
 - Click one button to purchase all the ingredients of the prescription for clients.
 
-### Tele-medicine
+## Tele-medicine
 
 ....
 
