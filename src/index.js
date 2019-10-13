@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './index.css';
@@ -13,6 +13,11 @@ import Landing from './components/layout/Landing.component';
 import Register from './components/Auth/Register.component';
 import Login from './components/Auth/Login.component';
 import Alert from './components/layout/Alert.component';
+import { loadUser } from './actions/auth';
+import setAuthToken from './utils/setAuthToken';
+
+import Dashboard from './components/dashboard/Dashboard.component';
+import PrivateRoute from './components/routing/PrivateRoute';
 
 // const App = ({ children }) => (
 //   <Provider store={store}>
@@ -20,21 +25,36 @@ import Alert from './components/layout/Alert.component';
 //   </Provider>
 // );
 
-const App = () => (
-  <Router>
-    <Fragment>
-      <Navbar></Navbar>
-      <Route exact path="/" component={Landing} />
-      <section className="container">
-        <Alert></Alert>
-        <Switch>
-          <Route exact path="/register" component={Register}></Route>
-          <Route exact path="/login" component={Login}></Route>
-        </Switch>
-      </section>
-    </Fragment>
-  </Router>
-);
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
+
+const App = () => {
+  useEffect(() => {
+    store.dispatch(loadUser());
+  }, []);
+
+  return (
+    <Router>
+      <Fragment>
+        <Navbar></Navbar>
+        <Route exact path="/" component={Landing} />
+        <section className="container">
+          <Alert></Alert>
+          <Switch>
+            <Route exact path="/register" component={Register}></Route>
+            <Route exact path="/login" component={Login}></Route>
+            <PrivateRoute
+              exact
+              path="/dashboard"
+              component={Dashboard}
+            ></PrivateRoute>
+          </Switch>
+        </section>
+      </Fragment>
+    </Router>
+  );
+};
 
 // const styleLink = document.createElement('link');
 // styleLink.rel = 'stylesheet';
