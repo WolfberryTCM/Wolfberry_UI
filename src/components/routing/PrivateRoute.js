@@ -17,7 +17,7 @@ const PrivateRoute = ({
         <Component {...props} />
       )
     }
-  />
+  ></Route>
 );
 
 PrivateRoute.propTypes = {
