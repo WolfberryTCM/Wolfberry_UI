@@ -1,0 +1,29 @@
+dependencies: \
+  /Users/primnp/AwesomeProject/node_modules/react-native/Libraries/TypeSafety/RCTConvertHelpers.mm \
+  /Users/primnp/AwesomeProject/ios/Pods/Target\ Support\ Files/RCTTypeSafety/RCTTypeSafety-prefix.pch \
+  /Users/primnp/AwesomeProject/node_modules/react-native/Libraries/TypeSafety/RCTConvertHelpers.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/FBLazyVector/FBLazyVector/FBLazyVector.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/FBLazyVector/FBLazyVector/FBLazyIterator.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Folly/folly/Optional.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Folly/folly/Portability.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Folly/folly/portability/Config.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Folly/folly/CPortability.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Folly/folly/Traits.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Folly/folly/Utility.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Folly/folly/lang/Exception.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Folly/folly/CppAttributes.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/React-Core/React/RCTConvert.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/React-Core/React/RCTAnimationType.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/React-Core/React/RCTBorderStyle.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/React-Core/React/RCTDefines.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/React-Core/React/RCTInspectorDevServerHelper.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/React-Core/React/RCTPackagerConnection.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/React-Core/React/RCTLog.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/React-Core/React/RCTAssert.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/React-Core/React/RCTUtils.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/React-Core/React/RCTPointerEvents.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/React-Core/React/RCTTextDecorationLineType.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/Yoga/yoga/Yoga.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/Yoga/yoga/YGEnums.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/Yoga/yoga/YGMacros.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/Yoga/yoga/YGValue.h

@@ -1,0 +1,42 @@
+dependencies: \
+  /Users/primnp/AwesomeProject/node_modules/react-native/React/CoreModules/RCTPlatform.mm \
+  /Users/primnp/AwesomeProject/ios/Pods/Target\ Support\ Files/React-CoreModules/React-CoreModules-prefix.pch \
+  /Users/primnp/AwesomeProject/node_modules/react-native/React/CoreModules/RCTPlatform.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/React-Core/React/RCTBridgeModule.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/React-Core/React/RCTDefines.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/React-Core/React/RCTInspectorDevServerHelper.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/React-Core/React/RCTPackagerConnection.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/FBReactNativeSpec/FBReactNativeSpec/FBReactNativeSpec.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/RCTRequired/RCTRequired/RCTRequired.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/RCTTypeSafety/RCTTypeSafety/RCTConvertHelpers.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/FBLazyVector/FBLazyVector/FBLazyVector.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/FBLazyVector/FBLazyVector/FBLazyIterator.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Folly/folly/Optional.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Folly/folly/Portability.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Folly/folly/portability/Config.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Folly/folly/CPortability.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Folly/folly/Traits.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Folly/folly/Utility.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Folly/folly/lang/Exception.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Folly/folly/CppAttributes.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/RCTTypeSafety/RCTTypeSafety/RCTTypedModuleConstants.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/React-Core/React/RCTCxxConvert.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/React-Core/React/RCTManagedPointer.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/ReactCommon/ReactCommon/RCTTurboModule.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/React-Core/React/RCTBridge.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/React-Core/React/RCTBridgeDelegate.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/React-Core/React/RCTJavaScriptLoader.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/React-Core/React/RCTFrameUpdate.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/React-Core/React/RCTInvalidating.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/React-Core/React/RCTModuleMethod.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/React-Core/React/RCTBridgeMethod.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/React-Core/React/RCTNullability.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/ReactCommon/ReactCommon/JSCallInvoker.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/ReactCommon/ReactCommon/TurboModule.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/React-jsi/jsi/jsi.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/React-jsi/jsi/jsi-inl.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/React-cxxreact/cxxreact/MessageQueueThread.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/React-Core/React/RCTUtils.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/React-Core/React/RCTAssert.h \
+  /Users/primnp/AwesomeProject/ios/Pods/Headers/Public/React-Core/React/RCTVersion.h \
+  /Users/primnp/AwesomeProject/node_modules/react-native/React/CoreModules/CoreModulesPlugins.h
