@@ -17,29 +17,14 @@ const Login = ({ login, isAuthenticated }) => {
 
   const onSubmit = async e => {
     e.preventDefault();
+    console.log(email, password);
     login(email, password);
-    // const newUser = {
-    //   name,
-    //   email,
-    //   password
-    // };
-    // try {
-    //   const config = {
-    //     headers: {
-    //       'Content-Type': 'application/json'
-    //     }
-    //   };
-    //   const body = JSON.stringify(newUser);
-    //   const res = await axios.post('api/users', body, config);
-    // } catch (err) {
-    //   console.log(err.response.data);
-    // }
   };
 
   // Redirect if logged in
 
   if (isAuthenticated) {
-    return <Redirect to="/dashboard"></Redirect>;
+    return <Redirect to="/dashboard" />;
   }
 
   return (
@@ -81,11 +66,11 @@ const Login = ({ login, isAuthenticated }) => {
 
 Login.propTypes = {
   login: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool.isRequired
+  isAuthenticated: PropTypes.bool
 };
 
 const mapStateToProps = state => ({
-  isAuthenticated: state.isAuthenticated
+  isAuthenticated: state.auth.isAuthenticated
 });
 export default connect(
   mapStateToProps,

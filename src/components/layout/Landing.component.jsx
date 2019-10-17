@@ -24,9 +24,6 @@ const Landing = ({ isAuthenticated }) => {
             <Link to="/login" className="btn btn-light">
               Login
             </Link>
-            <Link to="/dashboard-test" className="btn btn-danger">
-              Manager Login
-            </Link>
           </div>
         </div>
       </div>
@@ -35,7 +32,7 @@ const Landing = ({ isAuthenticated }) => {
 };
 
 Landing.propTypes = {
-  isAuthenticated: PropTypes.bool.isRequired
+  isAuthenticated: PropTypes.bool
 };
 
 const mapStateToProps = state => ({
