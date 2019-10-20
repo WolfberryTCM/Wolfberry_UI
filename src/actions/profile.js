@@ -1,14 +1,15 @@
 import axios from 'axios';
+import { setAlert } from './alert';
 
 import { GET_PROFILE, PROFILE_ERROR } from './types';
 
-import { setAlert } from './alert';
+
+const profile_url = 'http://localhost:5000'
 
 // Get current users profile
-
 export const getCurrentProfile = () => async dispatch => {
   try {
-    const res = await axios.get('api/profile/me');
+    const res = await axios.get(`${profile_url}/api/profile/me`);
 
     dispatch({
       type: GET_PROFILE,
@@ -22,10 +23,31 @@ export const getCurrentProfile = () => async dispatch => {
   }
 };
 
+// Get profile by ID
+export const getProfileById = userId => async dispatch => {
+  try {
+    const res = await axios.get(`${profile_url}/api/profile/${userId}`)
+
+    dispatch({
+      type: GET_PROFILE,
+      payload: res.data
+    })
+
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload:{
+        msg: err.response.statusText,
+        status:err.response.status
+      }
+    })
+  }
+}
+
 // Create or Update profile
 export const createProfile = (
   formData,
-  history, // history push redirect
+  history, // history push redirect,
   edit = false
 ) => async dispatch => {
   try {
@@ -35,7 +57,7 @@ export const createProfile = (
       }
     };
 
-    const res = await axios.post('/api/profile', formData, config);
+    const res = await axios.post(`${profile_url}/api/profile`, formData, config);
 
     // Get profile for the state
     dispatch({
@@ -46,10 +68,11 @@ export const createProfile = (
     dispatch(setAlert(edit ? 'Profile Updated' : 'Profile Created', 'success'));
 
     if (!edit) {
-      history.push('/dashboard_test');
+      history.push('/dashboard');
     }
   } catch (err) {
     const errors = err.response.data.errors;
+
     if (errors) {
       errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
     }
