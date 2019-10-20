@@ -21,3 +21,7 @@ export const GET_PROFILE = 'GET_PROFILE';
 export const PROFILE_ERROR = 'GET_ERROR';
 
 export const CLEAR_PROFILE = 'CLEAR_PROFILE';
+
+export const SEARCH_BUSINESS = 'SEARCH_BUSINESS'
+
+export const SEARCH_FAIL = 'SEARCH_FAIL'

@@ -11,52 +11,26 @@ const EditProfile = ({
   history
 }) => {
   const [formData, setFormData] = useState({
-    company: '',
+    name: '',
+    business_size: '',
     website: '',
     location: '',
-    status: '',
-    skills: '',
-    bio: '',
-    twitter: '',
-    facebook: '',
-    linkedin: '',
-    youtube: '',
-    instagram: ''
+    services: ''
   });
 
-  const {
-    company,
-    website,
-    location,
-    status,
-    skills,
-    bio,
-    twitter,
-    facebook,
-    linkedin,
-    youtube,
-    instagram
-  } = formData;
+  const { name, business_size, website, location, services } = formData;
 
-  const [displaySocialInputs, toggleSocialInputs] = useState(false);
-
-  // useEffect(() => {
-  //   getCurrentProfile();
-
-  //   setFormData({
-  //     company: loading || !profile.company ? '' : profile.company,
-  //     website: loading || !profile.website ? '' : profile.website,
-  //     location: loading || !profile.location ? '' : profile.location,
-  //     status: loading || !profile.status ? '' : profile.status,
-  //     skills: loading || !profile.skills ? '' : profile.skills,
-  //     bio: loading || !profile.bio ? '' : profile.bio,
-  //     twitter: loading || !profile.social ? '' : profile.social.twitter,
-  //     facebook: loading || !profile.social ? '' : profile.social.facebook,
-  //     linkedin: loading || !profile.social ? '' : profile.social.linkedin,
-  //     youtube: loading || !profile.social ? '' : profile.social.youtube,
-  //     instagram: loading || !profile.social ? '' : profile.social.instagram
-  //   });
-  // }, [loading]); // When it load, this will run.
+  useEffect(() => {
+    getCurrentProfile();
+    setFormData({
+      name: loading || !profile.name ? '' : profile.name,
+      business_size:
+        loading || !profile.business_size ? '' : profile.business_size,
+      website: loading || !profile.website ? '' : profile.website,
+      location: loading || !profile.location ? '' : profile.location,
+      services: loading || !profile.services ? '' : profile.services
+    });
+  }, [loading]); // When it load, this will run.
 
   const onChange = e =>
     setFormData({
@@ -73,34 +47,30 @@ const EditProfile = ({
 
   return (
     <Fragment>
-      <h1 className="large text-primary">Create Your Profile</h1>
-      <p className="lead">
-        <i className="fas fa-user"></i> Let's get some information to make your
-        profile stand out
-      </p>
+      <h1 className="large text-primary">Update Your Profile</h1>
       <small>* = required field</small>
       <form className="form" onSubmit={e => onSubmit(e)}>
         <div className="form-group">
-          <select name="status" value={status} onChange={e => onChange(e)}>
-            <option value="0">* Select Professional Status</option>
-            <option value="Junior">Junior</option>
-            <option value="Senior">Senior</option>
+          <select
+            name="business_size"
+            value={business_size}
+            onChange={e => onChange(e)}
+          >
+            <option value="0">* Select Business Size</option>
+            <option value="Just me">Just me</option>
+            <option value="2-5">2-5</option>
+            <option value="6-50">6-50</option>
+            <option value="50+">50+</option>
           </select>
-          <small className="form-text">
-            Give us an idea of where you are at in your career
-          </small>
         </div>
         <div className="form-group">
           <input
             type="text"
-            placeholder="Company"
-            name="company"
-            value={company}
+            placeholder="* Business Name"
+            name="name"
+            value={name}
             onChange={e => onChange(e)}
           ></input>
-          <small className="form-text">
-            Could be your own company or one you work for
-          </small>
         </div>
         <div className="form-group">
           <input
@@ -110,9 +80,6 @@ const EditProfile = ({
             value={website}
             onChange={e => onChange(e)}
           ></input>
-          <small className="form-text">
-            Could be your own or a company website
-          </small>
         </div>
         <div className="form-group">
           <input
@@ -122,106 +89,18 @@ const EditProfile = ({
             value={location}
             onChange={e => onChange(e)}
           ></input>{' '}
-          <small className="form-text">
-            City & state suggested (eg. Boston, MA)
-          </small>
         </div>
         <div className="form-group">
           <input
             type="text"
-            placeholder="* Skills"
-            name="skills"
-            value={skills}
+            placeholder="Services"
+            name="services"
+            value={services}
             onChange={e => onChange(e)}
           ></input>
-
-          <small className="form-text">
-            Please use comma separated values (eg. acupuncture,herb...)
-          </small>
         </div>
-        <div className="form-group">
-          <textarea
-            placeholder="A short bio of yourself"
-            name="bio"
-            value={bio}
-            onChange={e => onChange(e)}
-          >
-            >
-          </textarea>
-          <small className="form-text">Tell us a little about yourself</small>
-        </div>
-
-        <div className="my-2">
-          <button
-            onClick={() => toggleSocialInputs(!displaySocialInputs)}
-            type="button"
-            className="btn btn-light"
-          >
-            Add Social Network Links
-          </button>
-          <span>Optional</span>
-        </div>
-        {displaySocialInputs && (
-          <Fragment>
-            <div className="form-group social-input">
-              <i className="fab fa-twitter fa-2x"></i>
-              <input
-                type="text"
-                placeholder="Twitter URL"
-                name="twitter"
-                value={twitter}
-                onChange={e => onChange(e)}
-              />
-            </div>
-
-            <div className="form-group social-input">
-              <i className="fab fa-facebook fa-2x"></i>
-              <input
-                type="text"
-                placeholder="Facebook URL"
-                name="facebook"
-                value={facebook}
-                onChange={e => onChange(e)}
-              />
-            </div>
-
-            <div className="form-group social-input">
-              <i className="fab fa-youtube fa-2x"></i>
-              <input
-                type="text"
-                placeholder="YouTube URL"
-                name="youtube"
-                value={youtube}
-                onChange={e => onChange(e)}
-              />
-            </div>
-
-            <div className="form-group social-input">
-              <i className="fab fa-linkedin fa-2x"></i>
-              <input
-                type="text"
-                placeholder="Linkedin URL"
-                name="linkedin"
-                value={linkedin}
-                onChange={e => onChange(e)}
-              />
-            </div>
-
-            <div className="form-group social-input">
-              <i className="fab fa-instagram fa-2x"></i>
-              <input
-                type="text"
-                placeholder="Instagram URL"
-                name="instagram"
-                value={instagram}
-                onChange={e => onChange(e)}
-              />
-            </div>
-          </Fragment>
-        )}
-
         <input type="submit" className="btn btn-primary my-1" />
-        <Link className="btn btn-light my-1" to="/dashboard-test">
+        <Link className="btn btn-light my-1" to="/dashboard">
           Go Back
         </Link>
       </form>
