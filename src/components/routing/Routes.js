@@ -9,6 +9,7 @@ import CreateProfile from '../profile-forms/CreateProfile.component';
 import EditProfile from '../profile-forms/EditProfile.component'
 import Search from '../search/Search.component'
 import Profile from '../profile/Profile.component'
+import Book from '../booking/Book.component'
 
 
 
@@ -19,6 +20,7 @@ const Routes = () => (
   <Route exact path='/register' component={Register} />
   <Route exact path='/login' component={Login} />
   <Route exact path='/search' component={Search} />
+  <Route exact path='/booking' component={Book} />
   <Route exact path='/profile/:id' component={Profile} />
   <PrivateRoute exact path='/dashboard' component={Dashboard} />
   <PrivateRoute exact path='/create-profile' component={CreateProfile} />
