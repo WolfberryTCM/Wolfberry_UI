@@ -3,8 +3,7 @@ import { setAlert } from './alert';
 
 import { GET_PROFILE, PROFILE_ERROR } from './types';
 
-
-const profile_url = 'http://localhost:5000'
+const profile_url = 'https://agile-badlands-98142.herokuapp.com';
 
 // Get current users profile
 export const getCurrentProfile = () => async dispatch => {
@@ -26,23 +25,22 @@ export const getCurrentProfile = () => async dispatch => {
 // Get profile by ID
 export const getProfileById = userId => async dispatch => {
   try {
-    const res = await axios.get(`${profile_url}/api/profile/${userId}`)
+    const res = await axios.get(`${profile_url}/api/profile/${userId}`);
 
     dispatch({
       type: GET_PROFILE,
       payload: res.data
-    })
-
+    });
   } catch (err) {
     dispatch({
       type: PROFILE_ERROR,
-      payload:{
+      payload: {
         msg: err.response.statusText,
-        status:err.response.status
+        status: err.response.status
       }
-    })
+    });
   }
-}
+};
 
 // Create or Update profile
 export const createProfile = (
@@ -57,7 +55,11 @@ export const createProfile = (
       }
     };
 
-    const res = await axios.post(`${profile_url}/api/profile`, formData, config);
+    const res = await axios.post(
+      `${profile_url}/api/profile`,
+      formData,
+      config
+    );
 
     // Get profile for the state
     dispatch({

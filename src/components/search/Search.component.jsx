@@ -26,7 +26,7 @@ const Search = ({ setAlert, searchBusiness, results }) => {
     <Fragment>
       <h1 className="large text-primary">Search</h1>
       <p className="lead">
-        <i className="fas fa-user"></i> Search the doctors
+        <i className="fas fa-user"></i> Search doctors
       </p>
       <form className="form" onSubmit={e => onSubmit(e)}>
         <div className="form-group">
@@ -50,7 +50,9 @@ const Search = ({ setAlert, searchBusiness, results }) => {
         <input type="submit" className="btn btn-primary" value="Search" />
       </form>
       {results &&
-        results.map(result => <ResultCard result={result}></ResultCard>)}
+        results.map(result => (
+          <ResultCard result={result} key={result.id}></ResultCard>
+        ))}
     </Fragment>
   );
 };

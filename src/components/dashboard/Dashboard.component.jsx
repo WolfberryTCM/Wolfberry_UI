@@ -14,7 +14,7 @@ const Dashboard = ({
 }) => {
   useEffect(() => {
     getCurrentProfile();
-  }, []); // blanked[] let it only run once
+  }, [getCurrentProfile]); // blanked[] let it only run once
 
   // We want to make sure that the profile is loaded.
   // If it is still loading, we want to have a spin graph

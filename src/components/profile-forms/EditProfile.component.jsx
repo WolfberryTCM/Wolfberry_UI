@@ -30,7 +30,7 @@ const EditProfile = ({
       location: loading || !profile.location ? '' : profile.location,
       services: loading || !profile.services ? '' : profile.services
     });
-  }, [loading]); // When it load, this will run.
+  }, [getCurrentProfile, loading]); // When it load, this will run.
 
   const onChange = e =>
     setFormData({
