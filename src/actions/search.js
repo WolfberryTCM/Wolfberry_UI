@@ -55,13 +55,13 @@ export const getBusinessDetail = alias => async dispatch => {
     });
   } catch (err) {
     console.log(err);
-    const errors = err.response.data.errors;
-    if (errors) {
-      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
-    }
-    dispatch({
-      type: SEARCH_FAIL
-    });
+    // const errors = err.response.data.errors;
+    // if (errors) {
+    //   errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+    // }
+    // dispatch({
+    //   type: SEARCH_FAIL
+    // });
   }
 };
 

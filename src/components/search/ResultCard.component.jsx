@@ -7,9 +7,9 @@ const ResultCard = ({ result, getBusinessDetail, getBusinessReviews }) => {
   const { alias, name, location, rating, review_count } = result;
   const { display_address } = location;
 
-  const getDetail = e => {
-    console.log(alias);
+  const getDetails = alias => {
     getBusinessDetail(alias);
+    getBusinessReviews(alias);
   };
   return (
     <Fragment>
@@ -25,7 +25,7 @@ const ResultCard = ({ result, getBusinessDetail, getBusinessReviews }) => {
           <Link
             to="/booking"
             className="btn btn-primary"
-            onClick={() => getBusinessDetail(alias)}
+            onClick={() => getDetails(alias)}
           >
             More Details
           </Link>
