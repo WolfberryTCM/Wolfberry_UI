@@ -14,11 +14,10 @@ const EditProfile = ({
     name: '',
     business_size: '',
     website: '',
-    location: '',
-    services: ''
+    location: ''
   });
 
-  const { name, business_size, website, location, services } = formData;
+  const { name, business_size, website, location } = formData;
 
   useEffect(() => {
     getCurrentProfile();
@@ -27,8 +26,7 @@ const EditProfile = ({
       business_size:
         loading || !profile.business_size ? '' : profile.business_size,
       website: loading || !profile.website ? '' : profile.website,
-      location: loading || !profile.location ? '' : profile.location,
-      services: loading || !profile.services ? '' : profile.services
+      location: loading || !profile.location ? '' : profile.location
     });
   }, [getCurrentProfile, loading]); // When it load, this will run.
 
@@ -89,15 +87,6 @@ const EditProfile = ({
             value={location}
             onChange={e => onChange(e)}
           ></input>{' '}
-        </div>
-        <div className="form-group">
-          <input
-            type="text"
-            placeholder="Services"
-            name="services"
-            value={services}
-            onChange={e => onChange(e)}
-          ></input>
         </div>
         <input type="submit" className="btn btn-primary my-1" />
         <Link className="btn btn-light my-1" to="/dashboard">

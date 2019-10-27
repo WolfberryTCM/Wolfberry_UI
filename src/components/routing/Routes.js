@@ -7,6 +7,10 @@ import Alert from '../layout/Alert.component';
 import Dashboard from '../dashboard/Dashboard.component';
 import CreateProfile from '../profile-forms/CreateProfile.component';
 import EditProfile from '../profile-forms/EditProfile.component';
+import EditService from '../profile-forms/EditService.component'
+import EditStaff from '../profile-forms/EditStaff.component'
+import EditCalender from '../profile-forms/EditCalender.component'
+
 import Search from '../search/Search.component';
 import Profile from '../profile/Profile.component';
 import Book from '../booking/Book.component';
@@ -23,6 +27,9 @@ const Routes = () => (
       <PrivateRoute exact path="/dashboard" component={Dashboard} />
       <PrivateRoute exact path="/create-profile" component={CreateProfile} />
       <PrivateRoute exact path="/edit-profile" component={EditProfile} />
+      <PrivateRoute exact path="/edit-service" component={EditService} />
+      <PrivateRoute exact path="/edit-staff" component={EditStaff} />
+      <PrivateRoute exact path="/edit-calender" component={EditCalender} />
     </Switch>
   </section>
 );

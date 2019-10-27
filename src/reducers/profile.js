@@ -1,9 +1,7 @@
-import { GET_PROFILE, PROFILE_ERROR, CLEAR_PROFILE } from '../actions/types';
+import { GET_PROFILE,UPDATE_PROFILE, PROFILE_ERROR, CLEAR_PROFILE } from '../actions/types';
 
 const initialState = {
   profile: null,
-  profiles: [], // A list of doctors
-  repos: [], // github repos
   loading: true, // The same as Auth
   error: {} // Any errors in the request
 };
@@ -13,6 +11,7 @@ export default function(state = initialState, action) {
 
   switch (type) {
     case GET_PROFILE:
+      case UPDATE_PROFILE:
       return {
         ...state,
         profile: payload,
@@ -28,7 +27,6 @@ export default function(state = initialState, action) {
       return {
         ...state,
         profile: null,
-        repos: [],
         loading: false
       };
     default:
