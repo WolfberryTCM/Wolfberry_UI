@@ -13,7 +13,7 @@ const BookTop = ({ detail, loading }) => {
           {display_address[0]}
           {display_address[1]}
         </div>
-        <p>{rating}</p>
+        <p>Rating:{rating}</p>
         <p>{review_count} Reviews</p>
         <p>Saved Number</p>
       </div>
