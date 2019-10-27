@@ -16,6 +16,7 @@ export const getBusinessReviews = alias => async dispatch => {
     }
   };
   const body = JSON.stringify({ alias });
+  
   try {
     const res = await axios.post(
       `${search_url}/api/yelp/reviews`,

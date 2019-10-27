@@ -18,7 +18,7 @@ const Book = ({ loading }) => {
             <BookTop></BookTop>
             <ul className="nav nav-pills nav-fill">
               <li className="nav-item">
-                <Link className="nav-link active" to="/bookbook">
+                <Link className="nav-link" to="/bookbook">
                   Book
                 </Link>
               </li>
