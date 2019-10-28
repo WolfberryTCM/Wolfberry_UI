@@ -25,7 +25,6 @@ const Dashboard = ({
     <Fragment>
       <h1 className="large text-primary">Dashboard</h1>
       <p className="lead"></p>
-      <i className="fas fa-user">Welcome {user && user.name}</i>
       {profile !== null ? (
         <Fragment>
           <DashboardActions></DashboardActions>

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { setAlert } from './alert';
 
-import { GET_PROFILE, PROFILE_ERROR } from './types';
+import { GET_PROFILE,UPDATE_PROFILE, PROFILE_ERROR } from './types';
 
 const profile_url = 'https://agile-badlands-98142.herokuapp.com';
 
@@ -85,3 +85,147 @@ export const createProfile = (
     });
   }
 };
+
+// Add service
+export const addService = (formData) => async dispatch => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type':'application/json'
+      }
+    };
+
+    const res = await axios.put(`${profile_url}/api/profile/service`,formData,config);
+
+    dispatch({
+      type:UPDATE_PROFILE,
+      payload: res.data
+    })
+
+    dispatch(setAlert('Service Added','success'));
+
+  } catch(err) {
+    const errors = err.response.data.errors;
+
+    if(errors) {
+      errors.forEach(error=>dispatch(setAlert(error.msg,'danger')))
+    }
+
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: {msg:
+      err.response.statusText, status:err.response.status}
+    })
+  }
+}
+
+// Delete service
+export const deleteService = id => async dispatch=> {
+  try {
+    const res = await axios.delete(`${profile_url}/api/profile/service/${id}`);
+
+    dispatch({
+      type: UPDATE_PROFILE,
+      payload:res.data
+    })
+
+    dispatch(setAlert('Service Removed','success'))
+  } catch(err) {
+    dispatch({
+      type:PROFILE_ERROR,
+      payload:{
+        msg:err.response.statusText,
+        status: err.response.status
+      }
+    })
+  }
+}
+
+// Add staff
+export const addStaff = (formData) => async dispatch => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type':'application/json'
+      }
+    };
+
+    const res = await axios.put(`${profile_url}/api/profile/staff`,formData,config);
+
+    dispatch({
+      type:UPDATE_PROFILE,
+      payload: res.data
+    })
+
+    dispatch(setAlert('Staff Added','success'));
+
+  } catch(err) {
+    const errors = err.response.data.errors;
+
+    if(errors) {
+      errors.forEach(error=>dispatch(setAlert(error.msg,'danger')))
+    }
+
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: {msg:
+      err.response.statusText, status:err.response.status}
+    })
+  }
+}
+
+// Delete staff
+export const deleteStaff = id => async dispatch=> {
+  try {
+    const res = await axios.delete(`${profile_url}/api/profile/staff/${id}`);
+
+    dispatch({
+      type: UPDATE_PROFILE,
+      payload:res.data
+    })
+
+    dispatch(setAlert('Staff Removed','success'))
+  } catch(err) {
+    console.error(err.message)
+    dispatch({
+      type:PROFILE_ERROR,
+      payload:{
+        msg:err.response.statusText,
+        status: err.response.status
+      }
+    })
+  }
+}
+
+// Update hours
+export const updateHours = (formData) => async dispatch => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+    const res = await axios.post(`${profile_url}/api/profile/hours`,formData,config);
+
+    dispatch({
+      type:UPDATE_PROFILE,
+      payload: res.data
+    })
+
+    dispatch(setAlert('Hours Updated','Success'))
+  } catch (err) {
+    if(err.response) {
+      const errors = err.response.data.errors;
+
+    if(errors) {
+      errors.forEach(error=>dispatch(setAlert(error.msg,'danger')))
+    }
+      dispatch({
+        type: PROFILE_ERROR,
+        payload: {msg:
+        err.response.statusText, status:err.response.status}
+      })
+    }
+    
+  }
+}
