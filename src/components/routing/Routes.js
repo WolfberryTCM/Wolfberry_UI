@@ -9,7 +9,7 @@ import CreateProfile from '../profile-forms/CreateProfile.component';
 import EditProfile from '../profile-forms/EditProfile.component';
 import EditService from '../profile-forms/EditService.component'
 import EditStaff from '../profile-forms/EditStaff.component'
-import EditCalender from '../profile-forms/EditCalender.component'
+import EditHours from '../profile-forms/EditHours.component'
 
 import Search from '../search/Search.component';
 import Profile from '../profile/Profile.component';
@@ -29,7 +29,7 @@ const Routes = () => (
       <PrivateRoute exact path="/edit-profile" component={EditProfile} />
       <PrivateRoute exact path="/edit-service" component={EditService} />
       <PrivateRoute exact path="/edit-staff" component={EditStaff} />
-      <PrivateRoute exact path="/edit-calender" component={EditCalender} />
+      <PrivateRoute exact path="/edit-hours" component={EditHours} />
     </Switch>
   </section>
 );

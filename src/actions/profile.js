@@ -174,7 +174,7 @@ export const addStaff = (formData) => async dispatch => {
   }
 }
 
-// Delete service
+// Delete staff
 export const deleteStaff = id => async dispatch=> {
   try {
     const res = await axios.delete(`${profile_url}/api/profile/staff/${id}`);
@@ -186,6 +186,7 @@ export const deleteStaff = id => async dispatch=> {
 
     dispatch(setAlert('Staff Removed','success'))
   } catch(err) {
+    console.error(err.message)
     dispatch({
       type:PROFILE_ERROR,
       payload:{
@@ -193,5 +194,38 @@ export const deleteStaff = id => async dispatch=> {
         status: err.response.status
       }
     })
+  }
+}
+
+// Update hours
+export const updateHours = (formData) => async dispatch => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+    const res = await axios.post(`${profile_url}/api/profile/hours`,formData,config);
+
+    dispatch({
+      type:UPDATE_PROFILE,
+      payload: res.data
+    })
+
+    dispatch(setAlert('Hours Updated','Success'))
+  } catch (err) {
+    if(err.response) {
+      const errors = err.response.data.errors;
+
+    if(errors) {
+      errors.forEach(error=>dispatch(setAlert(error.msg,'danger')))
+    }
+      dispatch({
+        type: PROFILE_ERROR,
+        payload: {msg:
+        err.response.statusText, status:err.response.status}
+      })
+    }
+    
   }
 }

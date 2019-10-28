@@ -13,8 +13,8 @@ const DashboardAction = () => {
       <Link to="/edit-staff" className="btn btn-light">
         <i className="fas fa-user-md text-primary"></i> Edit Staff
       </Link>
-      <Link to="/edit-calender" className="btn btn-light">
-        <i className="far fa-calendar-alt text-primary"></i> Edit Calender
+      <Link to="/edit-hours" className="btn btn-light">
+        <i className="far fa-calendar-alt text-primary"></i> Edit Hours
       </Link>
     </div>
   );
