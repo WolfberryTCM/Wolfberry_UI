@@ -1,29 +1,17 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Checkbox from '@material-ui/core/Checkbox';
 import Paper from '@material-ui/core/Paper';
-import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
 
 import { connect } from 'react-redux';
 import { updateHours } from '../../actions/profile';
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    width: '100%',
-    marginTop: theme.spacing(3),
-    overflowX: 'auto'
-  },
-  table: {
-    minWidth: 650
-  }
-}));
+import CustomizeHours from './CustomizeHours.component';
 
 const EditHours = ({ hours, updateHours }) => {
   const { isInitial, open } = hours;
@@ -136,151 +124,36 @@ const EditHours = ({ hours, updateHours }) => {
         </TableHead>
 
         <TableBody>
-          <TableRow key="Monday">
-            <TableCell component="th" scope="row">
-              Monday
-            </TableCell>
-            <TableCell align="right">
-              <TextField
-                type="time"
-                name="start"
-                value={mondayData.start}
-                onChange={e => handleMondayChange(e)}
-              />
-            </TableCell>
-            <TableCell align="right">
-              <TextField
-                type="time"
-                name="end"
-                value={mondayData.end}
-                onChange={e => handleMondayChange(e)}
-              />
-            </TableCell>
-            <TableCell align="right">
-              <Checkbox
-                name="check"
-                value={mondayData.check}
-                checked={mondayData.check}
-                onChange={e => handleMondayCheck(e)}
-              />
-            </TableCell>
-          </TableRow>
-          <TableRow key="Tuesday">
-            <TableCell component="th" scope="row">
-              Tuesday
-            </TableCell>
-            <TableCell align="right">
-              <TextField
-                type="time"
-                name="start"
-                value={tuesdayData.start}
-                onChange={e => handleTuesdayChange(e)}
-              />
-            </TableCell>
-            <TableCell align="right">
-              <TextField
-                type="time"
-                name="end"
-                value={tuesdayData.end}
-                onChange={e => handleTuesdayChange(e)}
-              />
-            </TableCell>
-            <TableCell align="right">
-              <Checkbox
-                name="check"
-                checked={tuesdayData.check}
-                value={tuesdayData.check}
-                onChange={e => handleTuesdayCheck(e)}
-              />
-            </TableCell>
-          </TableRow>
-          <TableRow key="Wednesday">
-            <TableCell component="th" scope="row">
-              Wednesday
-            </TableCell>
-            <TableCell align="right">
-              <TextField
-                type="time"
-                name="start"
-                value={wednesdayData.start}
-                onChange={e => handleWednesdayChange(e)}
-              />
-            </TableCell>
-            <TableCell align="right">
-              <TextField
-                type="time"
-                name="end"
-                value={wednesdayData.end}
-                onChange={e => handleWednesdayChange(e)}
-              />
-            </TableCell>
-            <TableCell align="right">
-              <Checkbox
-                name="check"
-                checked={wednesdayData.check}
-                value={wednesdayData.check}
-                onChange={e => handleWednesdayCheck(e)}
-              />
-            </TableCell>
-          </TableRow>
-          <TableRow key="Thursday">
-            <TableCell component="th" scope="row">
-              Thursday
-            </TableCell>
-            <TableCell align="right">
-              <TextField
-                type="time"
-                name="start"
-                value={thursdayData.start}
-                onChange={e => handleThursdayChange(e)}
-              />
-            </TableCell>
-            <TableCell align="right">
-              <TextField
-                type="time"
-                name="end"
-                value={thursdayData.end}
-                onChange={e => handleThursdayChange(e)}
-              />
-            </TableCell>
-            <TableCell align="right">
-              <Checkbox
-                name="check"
-                checked={thursdayData.check}
-                value={thursdayData.check}
-                onChange={e => handleThursdayCheck(e)}
-              />
-            </TableCell>
-          </TableRow>
-          <TableRow key="Monday">
-            <TableCell component="th" scope="row">
-              Friday
-            </TableCell>
-            <TableCell align="right">
-              <TextField
-                type="time"
-                name="start"
-                value={fridayData.start}
-                onChange={e => handleFridayChange(e)}
-              />
-            </TableCell>
-            <TableCell align="right">
-              <TextField
-                type="time"
-                name="end"
-                value={fridayData.end}
-                onChange={e => handleFridayChange(e)}
-              />
-            </TableCell>
-            <TableCell align="right">
-              <Checkbox
-                name="check"
-                checked={fridayData.check}
-                value={fridayData.check}
-                onChange={e => handleFridayCheck(e)}
-              />
-            </TableCell>
-          </TableRow>
+          <CustomizeHours
+            name={'Monday'}
+            hours={mondayData}
+            handleChange={handleMondayChange}
+            handleCheck={handleMondayCheck}
+          ></CustomizeHours>
+          <CustomizeHours
+            name={'Tuesday'}
+            hours={tuesdayData}
+            handleChange={handleTuesdayChange}
+            handleCheck={handleTuesdayCheck}
+          ></CustomizeHours>
+          <CustomizeHours
+            name={'Wednesday'}
+            hours={wednesdayData}
+            handleChange={handleWednesdayChange}
+            handleCheck={handleWednesdayCheck}
+          ></CustomizeHours>
+          <CustomizeHours
+            name={'Thursday'}
+            hours={thursdayData}
+            handleChange={handleThursdayChange}
+            handleCheck={handleThursdayCheck}
+          ></CustomizeHours>
+          <CustomizeHours
+            name={'Friday'}
+            hours={fridayData}
+            handleChange={handleFridayChange}
+            handleCheck={handleFridayCheck}
+          ></CustomizeHours>
         </TableBody>
       </Table>
       <Button
