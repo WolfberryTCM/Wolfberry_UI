@@ -1,31 +1,40 @@
-import 'date-fns';
 import React from 'react';
-import DateFnsUtils from '@date-io/date-fns';
-import {
-  MuiPickersUtilsProvider,
-  KeyboardTimePicker
-} from '@material-ui/pickers';
+import TableRow from '@material-ui/core/TableRow';
+import Checkbox from '@material-ui/core/Checkbox';
+import TableCell from '@material-ui/core/TableCell';
+import TextField from '@material-ui/core/TextField';
 
-const CustomizeHours = ({ time, handleChange }) => {
-  const [selectedDate, setSelectedDate] = React.useState(
-    new Date(`2014-08-18T${time}`)
-  );
-
-  const handleDateChange = date => {
-    setSelectedDate(date);
-  };
-
+const CustomizeHours = ({ name, hours, handleChange, handleCheck }) => {
   return (
-    <MuiPickersUtilsProvider utils={DateFnsUtils}>
-      <KeyboardTimePicker
-        margin="normal"
-        value={selectedDate}
-        onChange={handleDateChange}
-        KeyboardButtonProps={{
-          'aria-label': 'change time'
-        }}
-      />
-    </MuiPickersUtilsProvider>
+    <TableRow key={hours.day}>
+      <TableCell component="th" scope="row">
+        {name}
+      </TableCell>
+      <TableCell align="right">
+        <TextField
+          type="time"
+          name="start"
+          value={hours.start}
+          onChange={e => handleChange(e)}
+        />
+      </TableCell>
+      <TableCell align="right">
+        <TextField
+          type="time"
+          name="end"
+          value={hours.end}
+          onChange={e => handleChange(e)}
+        />
+      </TableCell>
+      <TableCell align="right">
+        <Checkbox
+          name="check"
+          value={hours.check}
+          checked={hours.check}
+          onChange={e => handleCheck(e)}
+        />
+      </TableCell>
+    </TableRow>
   );
 };
 
