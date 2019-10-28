@@ -2,9 +2,9 @@ import React, { useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Spinner from '../layout/Spinner.component';
-import { getCurrentProfile } from '../../actions/profile';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
+import { getCurrentProfile } from '../../actions/profile';
 import DashboardActions from './DashboardAction';
 
 const Dashboard = ({
@@ -20,7 +20,7 @@ const Dashboard = ({
   // If it is still loading, we want to have a spin graph
 
   return loading && profile === null ? (
-    <Spinner />
+    <CircularProgress></CircularProgress>
   ) : (
     <Fragment>
       <h1 className="large text-primary">Dashboard</h1>
