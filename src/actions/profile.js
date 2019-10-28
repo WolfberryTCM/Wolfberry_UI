@@ -212,7 +212,7 @@ export const updateHours = (formData) => async dispatch => {
       payload: res.data
     })
 
-    dispatch(setAlert('Hours Updated','Success'))
+    dispatch(setAlert('Hours Updated','success'))
   } catch (err) {
     if(err.response) {
       const errors = err.response.data.errors;

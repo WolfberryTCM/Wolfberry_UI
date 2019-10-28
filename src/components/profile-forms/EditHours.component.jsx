@@ -1,19 +1,31 @@
-import React, { useState } from 'react';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
+import React, { useState, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import SaveIcon from '@material-ui/icons/Save';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  Paper,
+  Button,
+  makeStyles
+} from '@material-ui/core';
 
 import { connect } from 'react-redux';
 import { updateHours } from '../../actions/profile';
 
 import CustomizeHours from './CustomizeHours.component';
 
+const useStyles = makeStyles(theme => ({
+  button: {
+    margin: theme.spacing(1)
+  }
+}));
+
 const EditHours = ({ hours, updateHours }) => {
+  const classes = useStyles();
+
   const { isInitial, open } = hours;
 
   let initialMondayData = {};
@@ -21,6 +33,8 @@ const EditHours = ({ hours, updateHours }) => {
   let initialWednesdayData = {};
   let initialThursdayData = {};
   let initialFridayData = {};
+  let initialSaturdayData = {};
+  let initialSundayData = {};
 
   if (isInitial) {
     initialMondayData = {
@@ -53,12 +67,26 @@ const EditHours = ({ hours, updateHours }) => {
       end: '17:00',
       check: true
     };
+    initialSaturdayData = {
+      day: '5',
+      start: '09:00',
+      end: '17:00',
+      check: false
+    };
+    initialSundayData = {
+      day: '6',
+      start: '09:00',
+      end: '17:00',
+      check: false
+    };
   } else {
     initialMondayData = open.filter(hour => hour.day === '0')[0];
     initialTuesdayData = open.filter(hour => hour.day === '1')[0];
     initialWednesdayData = open.filter(hour => hour.day === '2')[0];
     initialThursdayData = open.filter(hour => hour.day === '3')[0];
     initialFridayData = open.filter(hour => hour.day === '4')[0];
+    initialSaturdayData = open.filter(hour => hour.day === '5')[0];
+    initialSundayData = open.filter(hour => hour.day === '6')[0];
   }
 
   const [mondayData, setMondayData] = useState(initialMondayData);
@@ -66,12 +94,22 @@ const EditHours = ({ hours, updateHours }) => {
   const [wednesdayData, setWednesdayData] = useState(initialWednesdayData);
   const [thursdayData, setThursdayData] = useState(initialThursdayData);
   const [fridayData, setFridayData] = useState(initialFridayData);
+  const [saturdayData, setSaturdayData] = useState(initialSaturdayData);
+  const [sundayData, setSundayData] = useState(initialSundayData);
 
   const formData = {
     hours: {
       isInitial: false,
       hours_type: 'REGULAR',
-      open: [mondayData, tuesdayData, wednesdayData, thursdayData, fridayData]
+      open: [
+        mondayData,
+        tuesdayData,
+        wednesdayData,
+        thursdayData,
+        fridayData,
+        saturdayData,
+        sundayData
+      ]
     }
   };
   const onSubmit = e => {
@@ -94,6 +132,13 @@ const EditHours = ({ hours, updateHours }) => {
   const handleFridayChange = e => {
     setFridayData({ ...fridayData, [e.target.name]: e.target.value });
   };
+  const handleSaturdayChange = e => {
+    setSaturdayData({ ...saturdayData, [e.target.name]: e.target.value });
+  };
+  const handleSundayChange = e => {
+    setSundayData({ ...sundayData, [e.target.name]: e.target.value });
+  };
+
   const handleMondayCheck = e => {
     setMondayData({ ...mondayData, [e.target.name]: e.target.checked });
   };
@@ -109,66 +154,95 @@ const EditHours = ({ hours, updateHours }) => {
   const handleFridayCheck = e => {
     setFridayData({ ...fridayData, [e.target.name]: e.target.checked });
   };
+  const handleSaturdayCheck = e => {
+    setSaturdayData({ ...saturdayData, [e.target.name]: e.target.checked });
+  };
+  const handleSundayCheck = e => {
+    setSundayData({ ...sundayData, [e.target.name]: e.target.checked });
+  };
 
   return (
-    <Paper>
-      <Table aria-label="caption table">
-        <caption>A barbone structure table example with a caption</caption>
-        <TableHead>
-          <TableRow>
-            <TableCell>Day </TableCell>
-            <TableCell align="right">Start</TableCell>
-            <TableCell align="right">End</TableCell>
-            <TableCell align="right">Checked</TableCell>
-          </TableRow>
-        </TableHead>
+    <Fragment>
+      <Paper>
+        <Table aria-label="caption table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Day </TableCell>
+              <TableCell align="right">Start</TableCell>
+              <TableCell align="right">End</TableCell>
+              <TableCell align="right">Checked</TableCell>
+            </TableRow>
+          </TableHead>
 
-        <TableBody>
-          <CustomizeHours
-            name={'Monday'}
-            hours={mondayData}
-            handleChange={handleMondayChange}
-            handleCheck={handleMondayCheck}
-          ></CustomizeHours>
-          <CustomizeHours
-            name={'Tuesday'}
-            hours={tuesdayData}
-            handleChange={handleTuesdayChange}
-            handleCheck={handleTuesdayCheck}
-          ></CustomizeHours>
-          <CustomizeHours
-            name={'Wednesday'}
-            hours={wednesdayData}
-            handleChange={handleWednesdayChange}
-            handleCheck={handleWednesdayCheck}
-          ></CustomizeHours>
-          <CustomizeHours
-            name={'Thursday'}
-            hours={thursdayData}
-            handleChange={handleThursdayChange}
-            handleCheck={handleThursdayCheck}
-          ></CustomizeHours>
-          <CustomizeHours
-            name={'Friday'}
-            hours={fridayData}
-            handleChange={handleFridayChange}
-            handleCheck={handleFridayCheck}
-          ></CustomizeHours>
-        </TableBody>
-      </Table>
-      <Button
-        variant="contained"
-        color="primary"
-        size="small"
-        startIcon={<SaveIcon />}
-        onClick={e => onSubmit(formData)}
-      >
-        Save
-      </Button>
-      <Button variant="contained" color="primary" size="small">
-        Go Back
-      </Button>
-    </Paper>
+          <TableBody>
+            <CustomizeHours
+              name={'Monday'}
+              hours={mondayData}
+              handleChange={handleMondayChange}
+              handleCheck={handleMondayCheck}
+            ></CustomizeHours>
+            <CustomizeHours
+              name={'Tuesday'}
+              hours={tuesdayData}
+              handleChange={handleTuesdayChange}
+              handleCheck={handleTuesdayCheck}
+            ></CustomizeHours>
+            <CustomizeHours
+              name={'Wednesday'}
+              hours={wednesdayData}
+              handleChange={handleWednesdayChange}
+              handleCheck={handleWednesdayCheck}
+            ></CustomizeHours>
+            <CustomizeHours
+              name={'Thursday'}
+              hours={thursdayData}
+              handleChange={handleThursdayChange}
+              handleCheck={handleThursdayCheck}
+            ></CustomizeHours>
+            <CustomizeHours
+              name={'Friday'}
+              hours={fridayData}
+              handleChange={handleFridayChange}
+              handleCheck={handleFridayCheck}
+            ></CustomizeHours>
+            <CustomizeHours
+              name={'Saturday'}
+              hours={saturdayData}
+              handleChange={handleSaturdayChange}
+              handleCheck={handleSaturdayCheck}
+            ></CustomizeHours>
+            <CustomizeHours
+              name={'Sunday'}
+              hours={sundayData}
+              handleChange={handleSundayChange}
+              handleCheck={handleSundayCheck}
+            ></CustomizeHours>
+          </TableBody>
+        </Table>
+      </Paper>
+      <div style={{ textAlign: 'center' }}>
+        <Button
+          className={classes.button}
+          variant="contained"
+          color="primary"
+          size="small"
+          startIcon={<SaveIcon />}
+          onClick={e => onSubmit(formData)}
+        >
+          Save
+        </Button>
+        <Link to="/dashboard">
+          <Button
+            className={classes.button}
+            variant="contained"
+            color="primary"
+            size="small"
+          >
+            Go Back
+          </Button>
+        </Link>
+      </div>
+    </Fragment>
   );
 };
 
