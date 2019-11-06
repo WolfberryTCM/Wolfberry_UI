@@ -1,7 +1,8 @@
-import { SEARCH_BUSINESS, SEARCH_FAIL } from '../actions/types';
+import { SEARCH_BUSINESS,GET_CURRENT_LOCATION, SEARCH_FAIL } from '../actions/types';
 
 const initialState = {
   result: [],
+  current_location:"",
   loading: true,
   error: {}
 };
@@ -16,6 +17,11 @@ export default function(state = initialState, action) {
         result: payload,
         loading: false
       };
+    case GET_CURRENT_LOCATION:
+      return {
+        ...state,
+        current_location:payload
+    }
     case SEARCH_FAIL:
       return {
         ...state,

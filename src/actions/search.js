@@ -3,11 +3,33 @@ import {
   SEARCH_BUSINESS,
   GET_BUSINESS_DETAIL,
   GET_BUSINESS_REVIEWS,
+  GET_CURRENT_LOCATION,
   SEARCH_FAIL
 } from './types';
 import { setAlert } from './alert';
 
 const search_url = 'https://agile-badlands-98142.herokuapp.com';
+
+export const getCurrentLocation = () => async dispatch => {
+  try {
+    const res = await axios.get(`${search_url}`);
+    dispatch({
+      type: GET_CURRENT_LOCATION,
+      payload:res.data
+    })
+  } catch(err) {
+    console.log(err);
+    if(err.response) {
+      const errors = err.response.data.errors;
+      if (errors) {
+        errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+      }
+      dispatch({
+        type: SEARCH_FAIL
+      });
+    }  
+  }
+}
 
 export const getBusinessReviews = alias => async dispatch => {
   const config = {
@@ -30,13 +52,15 @@ export const getBusinessReviews = alias => async dispatch => {
     });
   } catch (err) {
     console.log(err);
-    const errors = err.response.data.errors;
-    if (errors) {
-      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
-    }
-    dispatch({
-      type: SEARCH_FAIL
-    });
+    if(err.response) {
+      const errors = err.response.data.errors;
+      if (errors) {
+        errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+      }
+      dispatch({
+        type: SEARCH_FAIL
+      });
+    }  
   }
 };
 

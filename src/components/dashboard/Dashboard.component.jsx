@@ -5,16 +5,19 @@ import { Link } from 'react-router-dom';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 import { getCurrentProfile } from '../../actions/profile';
+import { getCurrentLocation } from '../../actions/search';
 import DashboardActions from './DashboardAction';
 
 const Dashboard = ({
   getCurrentProfile,
+  getCurrentLocation,
   auth: { user },
   profile: { profile, loading }
 }) => {
   useEffect(() => {
     getCurrentProfile();
-  }, [getCurrentProfile]); // blanked[] let it only run once
+    getCurrentLocation();
+  }, [getCurrentProfile, getCurrentLocation]); // blanked[] let it only run once
 
   // We want to make sure that the profile is loaded.
   // If it is still loading, we want to have a spin graph
@@ -53,5 +56,5 @@ const mapStateToProps = state => ({
 });
 export default connect(
   mapStateToProps,
-  { getCurrentProfile }
+  { getCurrentProfile, getCurrentLocation }
 )(Dashboard);
