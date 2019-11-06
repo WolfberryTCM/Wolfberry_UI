@@ -1,15 +1,16 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alert';
-import { searchBusiness } from '../../actions/search';
+import { searchBusiness, getCurrentLocation } from '../../actions/search';
 import PropTypes from 'prop-types';
 
 import ResultCard from './ResultCard.component';
 
-const Search = ({ setAlert, searchBusiness, results }) => {
+const Search = ({ setAlert, searchBusiness, search }) => {
+  const { result, current_location } = search;
   const [formData, setFormData] = useState({
     term: '',
-    location: ''
+    location: current_location.city
   });
 
   const { term, location } = formData;
@@ -18,6 +19,9 @@ const Search = ({ setAlert, searchBusiness, results }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = async e => {
+    if (location === '') {
+      setAlert();
+    }
     e.preventDefault();
     searchBusiness({ term, location });
   };
@@ -43,14 +47,15 @@ const Search = ({ setAlert, searchBusiness, results }) => {
             type="text"
             placeholder="Location"
             name="location"
+            defaultValue={location}
             value={location}
             onChange={e => onChange(e)}
           />
         </div>
         <input type="submit" className="btn btn-primary" value="Search" />
       </form>
-      {results &&
-        results.map(result => (
+      {result &&
+        result.map(result => (
           <ResultCard result={result} key={result.id}></ResultCard>
         ))}
     </Fragment>
@@ -59,15 +64,14 @@ const Search = ({ setAlert, searchBusiness, results }) => {
 
 Search.protoTypes = {
   setAlert: PropTypes.func.isRequired,
-  searchBusiness: PropTypes.func.isRequired,
-  result: PropTypes.object.isRequired
+  searchBusiness: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
-  results: state.search.result
+  search: state.search
 });
 
 export default connect(
   mapStateToProps,
-  { setAlert, searchBusiness }
+  { setAlert, searchBusiness, getCurrentLocation }
 )(Search);
