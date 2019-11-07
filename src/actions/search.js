@@ -80,24 +80,26 @@ export const getBusinessDetail = alias => async dispatch => {
     });
   } catch (err) {
     console.log(err);
-    // const errors = err.response.data.errors;
-    // if (errors) {
-    //   errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
-    // }
-    // dispatch({
-    //   type: SEARCH_FAIL
-    // });
+    if(err.response) {
+      const errors = err.response.data.errors;
+      if (errors) {
+        errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+      }
+      dispatch({
+        type: SEARCH_FAIL
+      });
+    }  
   }
 };
 
-export const searchBusiness = ({ term, location }) => async dispatch => {
+export const searchBusiness = ({ term, location ,limit,offset}) => async dispatch => {
   const config = {
     headers: {
       'Content-Type': 'application/json'
     }
   };
 
-  const body = JSON.stringify({ term, location });
+  const body = JSON.stringify({ term, location ,limit,offset});
 
   try {
     const res = await axios.post(`${search_url}/api/yelp`, body, config);
@@ -108,13 +110,16 @@ export const searchBusiness = ({ term, location }) => async dispatch => {
     });
   } catch (err) {
     console.log(err);
-    const errors = err.response.data.errors;
+    if(err.response) {
+      const errors = err.response.data.errors;
 
-    if (errors) {
-      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
-    }
-    dispatch({
-      type: SEARCH_FAIL
-    });
+      if (errors) {
+        errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+      }
+      dispatch({
+        type: SEARCH_FAIL
+      });
+    }  
   }
 };
+

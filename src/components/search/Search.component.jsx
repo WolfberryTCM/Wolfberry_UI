@@ -1,19 +1,31 @@
 import React, { useState, Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
+import InfiniteScroll from 'react-infinite-scroller';
 import { setAlert } from '../../actions/alert';
 import { searchBusiness, getCurrentLocation } from '../../actions/search';
 import PropTypes from 'prop-types';
 
 import ResultCard from './ResultCard.component';
 
-const Search = ({ setAlert, searchBusiness, search }) => {
-  const { result, current_location } = search;
+const Search = ({ setAlert, searchBusiness, getCurrentLocation, search }) => {
+  const {
+    result,
+    current_location,
+    limit,
+    offset,
+    hasMore,
+    get_location_loading
+  } = search;
   const [formData, setFormData] = useState({
-    term: '',
+    term: 'Chinese Medicine',
     location: current_location.city
   });
 
   const { term, location } = formData;
+
+  useEffect(() => {
+    getCurrentLocation();
+  }, []);
 
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -23,41 +35,47 @@ const Search = ({ setAlert, searchBusiness, search }) => {
       setAlert();
     }
     e.preventDefault();
-    searchBusiness({ term, location });
+    searchBusiness({ term, location, limit, offset });
   };
+
+  const loadMore = async e => {
+    searchBusiness({ term, location, limit, offset });
+  };
+
+  const loader = <div className="loader">Loading ...</div>;
 
   return (
     <Fragment>
-      <h1 className="large text-primary">Search</h1>
-      <p className="lead">
-        <i className="fas fa-user"></i> Search doctors
-      </p>
+      <h1 className="large text-primary">Doctors</h1>
       <form className="form" onSubmit={e => onSubmit(e)}>
-        <div className="form-group">
-          <input
-            type="text"
-            placeholder="Term"
-            name="term"
-            value={term}
-            onChange={e => onChange(e)}
-          />
-        </div>
         <div className="form-group">
           <input
             type="text"
             placeholder="Location"
             name="location"
-            defaultValue={location}
+            defaultValue={current_location.city}
             value={location}
             onChange={e => onChange(e)}
           />
         </div>
         <input type="submit" className="btn btn-primary" value="Search" />
       </form>
-      {result &&
-        result.map(result => (
-          <ResultCard result={result} key={result.id}></ResultCard>
-        ))}
+
+      {location !== '' && (
+        <InfiniteScroll
+          pageStart={0}
+          loadMore={loadMore}
+          hasMore={hasMore}
+          loader={loader}
+        >
+          <div className="tracks">
+            {result &&
+              result.map(result => (
+                <ResultCard result={result} key={result.id}></ResultCard>
+              ))}
+          </div>
+        </InfiniteScroll>
+      )}
     </Fragment>
   );
 };
