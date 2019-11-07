@@ -35,6 +35,7 @@ const EditStaff = ({ profile, addStaff, deleteStaff, history }) => {
         {staffs &&
           staffs.map((staff, index) => (
             <li
+              key={index}
               className="list-group-item"
               style={{
                 display: 'inline-flex',
