@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Spinner from '../layout/Spinner.component';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import ProfileTop from './ProfileTop.component';
 import ProfileBook from './ProfileBook.component';
 import ProfileReviews from './ProfileReviews.component';
@@ -22,34 +22,61 @@ const Profile = ({
 
   return (
     <Fragment>
-      {profile === null || loading ? (
-        <Spinner />
-      ) : (
-        <Fragment>
-          <Link to="/profiles" className="btn btn-light">
-            Back To Profiles
-          </Link>
-          {auth.isAuthenticated &&
-            auth.loading === false &&
-            auth.user._id === profile.user._id && (
-              <Link to="/edit-profile" className="btn btn-dark">
-                Edit Profile
-              </Link>
-            )}
-          <div className="profile-grid my-1">
-            <ProfileTop profile={profile} />
-            <ProfileBook profile={profile} />
-            <ProfileReviews profile={profile} />
-            <ProfileContact profile={profile} />
-          </div>
-        </Fragment>
-      )}
+      <Router>
+        {profile === null || loading ? (
+          <CircularProgress></CircularProgress>
+        ) : (
+          <Fragment>
+            <Link to="/dashboard" className="btn btn-light">
+              Back to dashboard
+            </Link>
+            {/* {auth.isAuthenticated &&
+              auth.loading === false &&
+              auth.user._id === profile.user._id && (
+                <Link to="/edit-profile" className="btn btn-dark">
+                  Edit Profile
+                </Link>
+              )} */}
+            <ProfileTop></ProfileTop>
+            <ul className="nav nav-pills nav-fill">
+              <li className="nav-item">
+                <Link className="nav-link" to="/profile-book">
+                  Book
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/profile-reviews">
+                  Reviews
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/profile-contact">
+                  Contact
+                </Link>
+              </li>
+            </ul>
+            <Switch>
+              <Route exact path="/profile-book" component={ProfileBook}></Route>
+              <Route
+                exact
+                path="/profile-reviews"
+                component={ProfileReviews}
+              ></Route>
+              <Route
+                exact
+                path="/profile-contact"
+                component={ProfileContact}
+              ></Route>
+            </Switch>
+          </Fragment>
+        )}
+      </Router>
     </Fragment>
   );
 };
 
 Profile.propTypes = {
-  getProfileById: PropTypes.func.isRequired,
+  // getProfileById: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired
 };

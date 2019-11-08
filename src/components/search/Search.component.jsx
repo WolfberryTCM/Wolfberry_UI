@@ -70,8 +70,8 @@ const Search = ({ setAlert, searchBusiness, getCurrentLocation, search }) => {
         >
           <div className="tracks">
             {result &&
-              result.map(result => (
-                <ResultCard result={result} key={result.id}></ResultCard>
+              result.map((result, index) => (
+                <ResultCard result={result} key={index}></ResultCard>
               ))}
           </div>
         </InfiniteScroll>

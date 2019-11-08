@@ -16,6 +16,9 @@ const DashboardAction = () => {
       <Link to="/edit-hours" className="btn btn-light">
         <i className="far fa-calendar-alt text-primary"></i> Edit Hours
       </Link>
+      <Link to="/profile" className="btn btn-light">
+        <i className="far fa-calendar-alt text-primary"></i> Preview 
+      </Link>
     </div>
   );
 };
