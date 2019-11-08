@@ -23,7 +23,7 @@ const Routes = () => (
       <Route exact path="/login" component={Login} />
       <Route exact path="/search" component={Search} />
       <Route exact path="/booking" component={Book} />
-      <Route exact path="/profile/:id" component={Profile} />
+      <Route exact path="/profile" component={Profile} />
       <PrivateRoute exact path="/dashboard" component={Dashboard} />
       <PrivateRoute exact path="/create-profile" component={CreateProfile} />
       <PrivateRoute exact path="/edit-profile" component={EditProfile} />

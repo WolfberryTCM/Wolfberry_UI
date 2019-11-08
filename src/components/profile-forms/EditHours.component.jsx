@@ -38,55 +38,55 @@ const EditHours = ({ hours, updateHours }) => {
 
   if (isInitial) {
     initialMondayData = {
-      day: '0',
-      start: '09:00',
-      end: '17:00',
-      check: true
-    };
-    initialTuesdayData = {
       day: '1',
       start: '09:00',
       end: '17:00',
       check: true
     };
-    initialWednesdayData = {
+    initialTuesdayData = {
       day: '2',
       start: '09:00',
       end: '17:00',
       check: true
     };
-    initialThursdayData = {
+    initialWednesdayData = {
       day: '3',
       start: '09:00',
       end: '17:00',
       check: true
     };
-    initialFridayData = {
+    initialThursdayData = {
       day: '4',
       start: '09:00',
       end: '17:00',
       check: true
     };
-    initialSaturdayData = {
+    initialFridayData = {
       day: '5',
       start: '09:00',
       end: '17:00',
-      check: false
+      check: true
     };
-    initialSundayData = {
+    initialSaturdayData = {
       day: '6',
       start: '09:00',
       end: '17:00',
       check: false
     };
+    initialSundayData = {
+      day: '0',
+      start: '09:00',
+      end: '17:00',
+      check: false
+    };
   } else {
-    initialMondayData = open.filter(hour => hour.day === '0')[0];
-    initialTuesdayData = open.filter(hour => hour.day === '1')[0];
-    initialWednesdayData = open.filter(hour => hour.day === '2')[0];
-    initialThursdayData = open.filter(hour => hour.day === '3')[0];
-    initialFridayData = open.filter(hour => hour.day === '4')[0];
-    initialSaturdayData = open.filter(hour => hour.day === '5')[0];
-    initialSundayData = open.filter(hour => hour.day === '6')[0];
+    initialMondayData = open.filter(hour => hour.day === '1')[0];
+    initialTuesdayData = open.filter(hour => hour.day === '2')[0];
+    initialWednesdayData = open.filter(hour => hour.day === '3')[0];
+    initialThursdayData = open.filter(hour => hour.day === '4')[0];
+    initialFridayData = open.filter(hour => hour.day === '5')[0];
+    initialSaturdayData = open.filter(hour => hour.day === '6')[0];
+    initialSundayData = open.filter(hour => hour.day === '0')[0];
   }
 
   const [mondayData, setMondayData] = useState(initialMondayData);

@@ -5196,6 +5196,11 @@ flat-cache@^2.0.1:
     rimraf "2.6.3"
     write "1.0.3"
 
+flatpickr@^4.5.7, flatpickr@^4.6.3:
+  version "4.6.3"
+  resolved "https://registry.yarnpkg.com/flatpickr/-/flatpickr-4.6.3.tgz#15a8b76b6e34e3a072861250503a5995b9d3bc60"
+  integrity sha512-007VucCkqNOMMb9ggRLNuJowwaJcyOh4sKAFcdGfahfGc7JQbf94zSzjdBq/wVyHWUEs5o3+idhFZ0wbZMRmVQ==
+
 flatted@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-2.0.1.tgz#69e57caa8f0eacbc281d2e2cb458d46fdb449e08"
@@ -9240,7 +9245,7 @@ prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.3"
 
-prop-types@^15.5.8, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -9421,6 +9426,13 @@ react-app-polyfill@^1.0.3:
     regenerator-runtime "0.13.3"
     whatwg-fetch "3.0.0"
 
+react-calendar-material@^0.1.8:
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/react-calendar-material/-/react-calendar-material-0.1.8.tgz#748c6f72447b946d16d034a6062c3afada5b2794"
+  integrity sha1-dIxvckR7lG0W0DSmBiw6+tpbJ5Q=
+  dependencies:
+    prop-types "^15.6.0"
+
 react-dev-utils@^9.0.4:
   version "9.0.4"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-9.0.4.tgz#5c71a8e8afdec0232c44d4e049d21baa437a92af"
@@ -9466,6 +9478,14 @@ react-error-overlay@^6.0.2:
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.2.tgz#642bd6157c6a4b6e9ca4a816f7ed30b868c47f81"
   integrity sha512-DHRuRk3K4Lg9obI6J4Y+nKvtwjasYRU9CFL3ud42x9YJG1HbQjSNublapC/WBJOA726gNUbqbj0U2df9+uzspQ==
+
+react-flatpickr@^3.9.1:
+  version "3.9.1"
+  resolved "https://registry.yarnpkg.com/react-flatpickr/-/react-flatpickr-3.9.1.tgz#2fcee71a2664df9c9290ea3550cb40fe06c99305"
+  integrity sha512-g3FdnrYfFWOj/cWuPwHhYigpchu8GwAJvUzxUrba20dhrAdW1+dwAQxE+3aGe6eFYhYlTosVYTP8XAefnn5kxg==
+  dependencies:
+    flatpickr "^4.5.7"
+    prop-types "^15.5.10"
 
 react-infinite-scroller@^1.2.4:
   version "1.2.4"
