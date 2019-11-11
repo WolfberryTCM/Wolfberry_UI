@@ -3,11 +3,20 @@ import { connect } from 'react-redux';
 import InfiniteScroll from 'react-infinite-scroller';
 import { setAlert } from '../../actions/alert';
 import { searchBusiness, getCurrentLocation } from '../../actions/search';
+import { getProfiles } from '../../actions/profile';
 import PropTypes from 'prop-types';
 
 import ResultCard from './ResultCard.component';
 
-const Search = ({ setAlert, searchBusiness, getCurrentLocation, search }) => {
+import InnerSearch from './InnerSearch.component';
+
+const Search = ({
+  setAlert,
+  searchBusiness,
+  getCurrentLocation,
+  search,
+  getProfiles
+}) => {
   const {
     result,
     current_location,
@@ -25,7 +34,8 @@ const Search = ({ setAlert, searchBusiness, getCurrentLocation, search }) => {
 
   useEffect(() => {
     getCurrentLocation();
-  }, [getCurrentLocation]);
+    getProfiles();
+  }, [getCurrentLocation, getProfiles]);
 
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -62,6 +72,8 @@ const Search = ({ setAlert, searchBusiness, getCurrentLocation, search }) => {
             </div>
             <input type="submit" className="btn btn-primary" value="Search" />
           </form>
+          <div>From Wolf berry:</div>
+          <InnerSearch></InnerSearch>
           <div>From Yelp:</div>
           <InfiniteScroll
             pageStart={0}
@@ -93,5 +105,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { setAlert, searchBusiness, getCurrentLocation }
+  { setAlert, searchBusiness, getCurrentLocation, getProfiles }
 )(Search);
