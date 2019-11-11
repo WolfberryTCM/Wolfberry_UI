@@ -35,14 +35,14 @@ export const loadUser = () => async dispatch => {
 };
 
 //Register User
-export const register = ({ name, email, password }) => async dispatch => {
+export const register = ({ name, email,isDoctor, password }) => async dispatch => {
   const config = {
     headers: {
       'Content-Type': 'application/json' 
     }
   };
 
-  const body = JSON.stringify({ name, email, password });
+  const body = JSON.stringify({ name, email,isDoctor, password });
 
   try {
     const res = await axios.post(`${auth_url}/api/users`, body, config);
@@ -85,11 +85,13 @@ export const login = ( email, password ) => async dispatch => {
 
     dispatch(loadUser());
   } catch (err) {
-    const errors = err.response.data.errors;
-    if (errors) {
-      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+    if(err.response) {
+      const errors = err.response.data.errors;
+      if (errors) {
+        errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+      }
     }
-    
+  
     dispatch({
       type: LOGIN_FAIL
     });

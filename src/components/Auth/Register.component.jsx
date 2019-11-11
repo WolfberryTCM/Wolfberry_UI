@@ -3,16 +3,20 @@ import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
+import Checkbox from '@material-ui/core/Checkbox';
 
 import PropTypes from 'prop-types';
+import { userInfo } from 'os';
 
-const Register = ({ setAlert, register, isAuthenticated }) => {
+const Register = ({ setAlert, register, isAuthenticated, user }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: '',
     password2: ''
   });
+
+  const [isDoctor, setIsDoctor] = useState(false);
 
   const { name, email, password, password2 } = formData;
 
@@ -24,12 +28,16 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     if (password !== password2) {
       setAlert('Passwords do not match', 'danger');
     } else {
-      register({ name, email, password });
+      register({ name, email, isDoctor, password });
     }
   };
 
-  if (isAuthenticated) {
+  if (isAuthenticated && user.isDoctor) {
     return <Redirect to="/dashboard" />;
+  }
+
+  if (isAuthenticated && !user.isDoctor) {
+    return <Redirect to="/search" />;
   }
 
   return (
@@ -60,6 +68,18 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             This site uses Gravatar so if you want a profile image, use a
             Gravatar email
           </small>
+        </div>
+        <div className="form-group">
+          <Checkbox
+            checked={isDoctor}
+            onChange={e => setIsDoctor(e.target.checked)}
+            name="isDoctor"
+            color="primary"
+            inputProps={{
+              'aria-label': 'secondary checkbox'
+            }}
+          />
+          I am a TCM doctor.
         </div>
         <div className="form-group">
           <input
@@ -97,7 +117,8 @@ Register.protoTypes = {
 };
 
 const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated
+  isAuthenticated: state.auth.isAuthenticated,
+  user: state.auth.user
 });
 
 export default connect(
