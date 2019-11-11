@@ -15,6 +15,8 @@ import Search from '../search/Search.component';
 import Profile from '../profile/Profile.component';
 import Book from '../booking/Book.component';
 
+import Appointment from '../appointment/Appointment.component'
+
 const Routes = () => (
   <section className="container">
     <Alert />
@@ -30,6 +32,7 @@ const Routes = () => (
       <PrivateRoute exact path="/edit-service" component={EditService} />
       <PrivateRoute exact path="/edit-staff" component={EditStaff} />
       <PrivateRoute exact path="/edit-hours" component={EditHours} />
+      <PrivateRoute exact path='/appointment' component={Appointment}/>
     </Switch>
   </section>
 );

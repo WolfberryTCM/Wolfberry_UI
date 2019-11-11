@@ -3,11 +3,20 @@ import { connect } from 'react-redux';
 import InfiniteScroll from 'react-infinite-scroller';
 import { setAlert } from '../../actions/alert';
 import { searchBusiness, getCurrentLocation } from '../../actions/search';
+import { getProfiles } from '../../actions/profile';
 import PropTypes from 'prop-types';
 
 import ResultCard from './ResultCard.component';
 
-const Search = ({ setAlert, searchBusiness, getCurrentLocation, search }) => {
+import InnerSearch from './InnerSearch.component';
+
+const Search = ({
+  setAlert,
+  searchBusiness,
+  getCurrentLocation,
+  search,
+  getProfiles
+}) => {
   const {
     result,
     current_location,
@@ -25,7 +34,8 @@ const Search = ({ setAlert, searchBusiness, getCurrentLocation, search }) => {
 
   useEffect(() => {
     getCurrentLocation();
-  }, []);
+    getProfiles();
+  }, [getCurrentLocation, getProfiles]);
 
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -46,35 +56,39 @@ const Search = ({ setAlert, searchBusiness, getCurrentLocation, search }) => {
 
   return (
     <Fragment>
-      <h1 className="large text-primary">Doctors</h1>
-      <form className="form" onSubmit={e => onSubmit(e)}>
-        <div className="form-group">
-          <input
-            type="text"
-            placeholder="Location"
-            name="location"
-            defaultValue={current_location.city}
-            value={location}
-            onChange={e => onChange(e)}
-          />
+      {!get_location_loading && (
+        <div>
+          <h1 className="large text-primary">Doctors</h1>
+          <form className="form" onSubmit={e => onSubmit(e)}>
+            <div className="form-group">
+              <input
+                type="text"
+                placeholder="Location"
+                name="location"
+                defaultValue={current_location.city}
+                value={location}
+                onChange={e => onChange(e)}
+              />
+            </div>
+            <input type="submit" className="btn btn-primary" value="Search" />
+          </form>
+          <div>From Wolf berry:</div>
+          <InnerSearch></InnerSearch>
+          <div>From Yelp:</div>
+          <InfiniteScroll
+            pageStart={0}
+            loadMore={loadMore}
+            hasMore={hasMore}
+            loader={loader}
+          >
+            <div className="tracks">
+              {result &&
+                result.map((result, index) => (
+                  <ResultCard result={result} key={index}></ResultCard>
+                ))}
+            </div>
+          </InfiniteScroll>
         </div>
-        <input type="submit" className="btn btn-primary" value="Search" />
-      </form>
-
-      {location !== '' && (
-        <InfiniteScroll
-          pageStart={0}
-          loadMore={loadMore}
-          hasMore={hasMore}
-          loader={loader}
-        >
-          <div className="tracks">
-            {result &&
-              result.map((result, index) => (
-                <ResultCard result={result} key={index}></ResultCard>
-              ))}
-          </div>
-        </InfiniteScroll>
       )}
     </Fragment>
   );
@@ -91,5 +105,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { setAlert, searchBusiness, getCurrentLocation }
+  { setAlert, searchBusiness, getCurrentLocation, getProfiles }
 )(Search);

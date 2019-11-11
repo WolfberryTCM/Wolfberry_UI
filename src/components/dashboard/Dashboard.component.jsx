@@ -1,7 +1,7 @@
 import React, { useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 import { getCurrentProfile } from '../../actions/profile';
@@ -26,6 +26,7 @@ const Dashboard = ({
     <CircularProgress></CircularProgress>
   ) : (
     <Fragment>
+      {user && !user.isDoctor && <Redirect to="search"></Redirect>}
       <h1 className="large text-primary">Dashboard</h1>
       <p className="lead"></p>
       {profile !== null ? (

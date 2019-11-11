@@ -4,19 +4,28 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
 
-const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
+const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
   const authLinks = (
     <ul>
+      {user && user.isDoctor ? (
+        <li>
+          <Link to="/dashboard">
+            <i className="fas fa-user" />{' '}
+            <span className="hide-sm">Dashboard</span>
+          </Link>
+        </li>
+      ) : (
+        <li>
+          <Link to="/search">
+            <i className="fas fa-user-md" />{' '}
+            <span className="hide-sm">Doctors</span>
+          </Link>
+        </li>
+      )}
       <li>
-        <Link to="/search">
-          <i className="fas fa-user-md" />{' '}
-          <span className="hide-sm">Doctors</span>
-        </Link>
-      </li>
-      <li>
-        <Link to="/dashboard">
-          <i className="fas fa-user" />{' '}
-          <span className="hide-sm">Dashboard</span>
+        <Link to="/appointment">
+          <i class="far fa-calendar-check"></i>{' '}
+          <span className="hide-sm">Appointments</span>
         </Link>
       </li>
       <li>
