@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
-const ResultCard = ({ profile }) => {
+const innerResultCard = ({ profile }) => {
   const { name, location } = profile;
   return (
     <Fragment>
@@ -11,7 +11,13 @@ const ResultCard = ({ profile }) => {
           <h5 className="card-title">{location}</h5>
           <p className="card-text">rating:</p>
           <p className="card-text">Reviews</p>
-          <Link to="/booking" className="btn btn-primary">
+          <Link
+            to={{
+              pathname: '/innerbooking',
+              profile: profile
+            }}
+            className="btn btn-primary"
+          >
             More Details
           </Link>
           <Link to="/reviews" className="btn btn-primary">
@@ -23,4 +29,4 @@ const ResultCard = ({ profile }) => {
   );
 };
 
-export default ResultCard;
+export default innerResultCard;
