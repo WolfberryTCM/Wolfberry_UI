@@ -1,11 +1,13 @@
-import React, { Fragment } from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import InnerBookService from './innerbookbook/innerBookService.component';
-import InnerBookStaff from './innerbookbook/innerBookStaff.component';
-import InnerBookDate from './innerbookbook/innerBookDate.component';
-import InnerBookDetail from './innerbookbook/innerBookDetail.component';
+import React, { Fragment } from "react";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import InnerBookService from "./innerbookbook/innerBookService.component";
+import InnerBookStaff from "./innerbookbook/innerBookStaff.component";
+import InnerBookDate from "./innerbookbook/innerBookDate.component";
+import InnerBookDetail from "./innerbookbook/innerBookDetail.component";
 
-const innerBookBook = () => {
+const innerBookBook = props => {
+  const { profile } = props.location;
+
   return (
     <Fragment>
       <Router>
@@ -13,22 +15,46 @@ const innerBookBook = () => {
           <h1>APPOINTMENT</h1>
           <ul className="nav nav-pills nav-fill">
             <li className="nav-item">
-              <Link className="nav-link" to="/innerbookbook/service">
+              <Link
+                className="nav-link"
+                to={{
+                  pathname: "/innerbookbook/service",
+                  profile: profile
+                }}
+              >
                 Service
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/innerbookbook/staff">
+              <Link
+                className="nav-link"
+                to={{
+                  pathname: "/innerbookbook/staff",
+                  profile: profile
+                }}
+              >
                 Staff
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/innerbookbook/date">
+              <Link
+                className="nav-link"
+                to={{
+                  pathname: "/innerbookbook/date",
+                  profile: profile
+                }}
+              >
                 Date&Time
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/innerbookbook/detail">
+              <Link
+                className="nav-link"
+                to={{
+                  pathname: "/innerbookbook/detail",
+                  profile: profile
+                }}
+              >
                 Detail
               </Link>
             </li>

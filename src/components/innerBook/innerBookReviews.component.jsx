@@ -1,5 +1,5 @@
-import React from 'react';
-import InnerReviewCard from './innerReviewCard.component';
+import React from "react";
+import InnerReviewCard from "./innerReviewCard.component";
 
 const innerBookReviews = props => {
   const { profile } = props.location;

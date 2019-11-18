@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { logout } from '../../actions/auth';
+import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { logout } from "../../actions/auth";
 
 const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
   const authLinks = (
@@ -10,27 +10,27 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
       {user && user.isDoctor ? (
         <li>
           <Link to="/dashboard">
-            <i className="fas fa-user" />{' '}
+            <i className="fas fa-user" />{" "}
             <span className="hide-sm">Dashboard</span>
           </Link>
         </li>
       ) : (
         <li>
           <Link to="/search">
-            <i className="fas fa-user-md" />{' '}
+            <i className="fas fa-user-md" />{" "}
             <span className="hide-sm">Doctors</span>
           </Link>
         </li>
       )}
       <li>
         <Link to="/appointment">
-          <i class="far fa-calendar-check"></i>{' '}
+          <i className="far fa-calendar-check"></i>{" "}
           <span className="hide-sm">Appointments</span>
         </Link>
       </li>
       <li>
         <Link onClick={logout} to="/login">
-          <i className="fas fa-sign-out-alt" />{' '}
+          <i className="fas fa-sign-out-alt" />{" "}
           <span className="hide-sm">Logout</span>
         </Link>
       </li>
@@ -69,7 +69,4 @@ Navbar.propTypes = {
 const mapStateToProps = state => ({
   auth: state.auth
 });
-export default connect(
-  mapStateToProps,
-  { logout }
-)(Navbar);
+export default connect(mapStateToProps, { logout })(Navbar);
