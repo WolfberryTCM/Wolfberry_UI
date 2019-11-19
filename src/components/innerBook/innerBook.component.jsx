@@ -1,12 +1,12 @@
-import React, { Fragment } from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import React, { Fragment } from "react";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
-import InnerBookTop from './innerBookTop.component';
-import InnerBookBook from './innerBookBook.component';
-import InnerBookReviews from './innerBookReviews.component';
-import InnerBookContact from './innerBookContact.component';
+import InnerBookTop from "./InnerBookTop.component";
+import InnerBookBook from "./InnerBookBook.component";
+import InnerBookReviews from "./InnerBookReviews.component";
+import InnerBookContact from "./InnerBookContact.component";
 
-const innerBook = props => {
+const InnerBook = props => {
   const { profile } = props.location;
   return (
     <Fragment>
@@ -18,7 +18,7 @@ const innerBook = props => {
               <Link
                 className="nav-link"
                 to={{
-                  pathname: '/innerbookbook',
+                  pathname: "/innerbookbook",
                   profile: profile
                 }}
               >
@@ -29,7 +29,7 @@ const innerBook = props => {
               <Link
                 className="nav-link"
                 to={{
-                  pathname: '/innerbookreviews',
+                  pathname: "/innerbookreviews",
                   profile: profile
                 }}
               >
@@ -40,7 +40,7 @@ const innerBook = props => {
               <Link
                 className="nav-link"
                 to={{
-                  pathname: '/innerbookcontact',
+                  pathname: "/innerbookcontact",
                   profile: profile
                 }}
               >
@@ -73,4 +73,4 @@ const innerBook = props => {
   );
 };
 
-export default innerBook;
+export default InnerBook;

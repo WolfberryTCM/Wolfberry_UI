@@ -14,7 +14,7 @@ import EditHours from '../profile-forms/EditHours.component'
 import Search from '../search/Search.component';
 import Profile from '../profile/Profile.component';
 import Book from '../booking/Book.component';
-import innerBook from '../innerBook/innerBook.component'
+import InnerBook from '../innerBook/InnerBook.component'
 
 import Appointment from '../appointment/Appointment.component'
 
@@ -26,7 +26,7 @@ const Routes = () => (
       <Route exact path="/login" component={Login} />
       <Route exact path="/search" component={Search} />
       <Route exact path="/booking" component={Book} />
-      <Route exact path='/innerbooking' component={innerBook}></Route>
+      <Route exact path='/innerbooking' component={InnerBook}></Route>
       <Route exact path="/profile" component={Profile} />
       <PrivateRoute exact path="/dashboard" component={Dashboard} />
       <PrivateRoute exact path="/create-profile" component={CreateProfile} />
