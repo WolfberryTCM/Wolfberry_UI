@@ -1,14 +1,14 @@
-import React, { useState, Fragment, useEffect } from 'react';
-import { connect } from 'react-redux';
-import InfiniteScroll from 'react-infinite-scroller';
-import { setAlert } from '../../actions/alert';
-import { searchBusiness, getCurrentLocation } from '../../actions/search';
-import { getProfiles } from '../../actions/profile';
-import PropTypes from 'prop-types';
+import React, { useState, Fragment, useEffect } from "react";
+import { connect } from "react-redux";
+import InfiniteScroll from "react-infinite-scroller";
+import { setAlert } from "../../actions/alert";
+import { searchBusiness, getCurrentLocation } from "../../actions/search";
+import { getProfiles } from "../../actions/profile";
+import PropTypes from "prop-types";
 
-import ResultCard from './ResultCard.component';
+import ResultCard from "./ResultCard.component";
 
-import InnerSearch from './InnerSearch.component';
+import InnerSearch from "./InnerSearch.component";
 
 const Search = ({
   setAlert,
@@ -26,7 +26,7 @@ const Search = ({
     get_location_loading
   } = search;
   const [formData, setFormData] = useState({
-    term: 'Chinese Medicine',
+    term: "Chinese Medicine",
     location: current_location.city
   });
 
@@ -41,8 +41,8 @@ const Search = ({
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = async e => {
-    if (location === '') {
-      setAlert();
+    if (location === "") {
+      setAlert("Please input the location", "danger");
     }
     e.preventDefault();
     searchBusiness({ term, location, limit, offset });
@@ -103,7 +103,9 @@ const mapStateToProps = state => ({
   search: state.search
 });
 
-export default connect(
-  mapStateToProps,
-  { setAlert, searchBusiness, getCurrentLocation, getProfiles }
-)(Search);
+export default connect(mapStateToProps, {
+  setAlert,
+  searchBusiness,
+  getCurrentLocation,
+  getProfiles
+})(Search);

@@ -1,7 +1,7 @@
-import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { getBusinessDetail, getBusinessReviews } from '../../actions/search';
+import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { getBusinessDetail, getBusinessReviews } from "../../actions/search";
 
 const ResultCard = ({ result, getBusinessDetail, getBusinessReviews }) => {
   const { alias, name, location, rating, review_count } = result;
@@ -14,7 +14,20 @@ const ResultCard = ({ result, getBusinessDetail, getBusinessReviews }) => {
   return (
     <Fragment>
       <div className="card">
-        <h5 className="card-header">{name}</h5>
+        <h5 className="card-header">
+          {name}
+          <p
+            style={{
+              display: "inLine",
+              position: "absolute",
+              right: "5px",
+              fontSize: "15px",
+              color: "red"
+            }}
+          >
+            From Yelp
+          </p>
+        </h5>
         <div className="card-body">
           <h5 className="card-title">
             {display_address[0]}
@@ -42,7 +55,6 @@ const ResultCard = ({ result, getBusinessDetail, getBusinessReviews }) => {
   );
 };
 
-export default connect(
-  null,
-  { getBusinessDetail, getBusinessReviews }
-)(ResultCard);
+export default connect(null, { getBusinessDetail, getBusinessReviews })(
+  ResultCard
+);
