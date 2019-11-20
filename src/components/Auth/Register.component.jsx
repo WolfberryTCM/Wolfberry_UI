@@ -1,19 +1,18 @@
-import React, { Fragment, useState } from 'react';
-import { connect } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
-import { setAlert } from '../../actions/alert';
-import { register } from '../../actions/auth';
-import Checkbox from '@material-ui/core/Checkbox';
+import React, { Fragment, useState } from "react";
+import { connect } from "react-redux";
+import { Link, Redirect } from "react-router-dom";
+import { setAlert } from "../../actions/alert";
+import { register } from "../../actions/auth";
+import Checkbox from "@material-ui/core/Checkbox";
 
-import PropTypes from 'prop-types';
-import { userInfo } from 'os';
+import PropTypes from "prop-types";
 
 const Register = ({ setAlert, register, isAuthenticated, user }) => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    password2: ''
+    name: "",
+    email: "",
+    password: "",
+    password2: ""
   });
 
   const [isDoctor, setIsDoctor] = useState(false);
@@ -26,7 +25,7 @@ const Register = ({ setAlert, register, isAuthenticated, user }) => {
   const onSubmit = async e => {
     e.preventDefault();
     if (password !== password2) {
-      setAlert('Passwords do not match', 'danger');
+      setAlert("Passwords do not match", "danger");
     } else {
       register({ name, email, isDoctor, password });
     }
@@ -76,7 +75,7 @@ const Register = ({ setAlert, register, isAuthenticated, user }) => {
             name="isDoctor"
             color="primary"
             inputProps={{
-              'aria-label': 'secondary checkbox'
+              "aria-label": "secondary checkbox"
             }}
           />
           I am a TCM doctor.
@@ -121,7 +120,4 @@ const mapStateToProps = state => ({
   user: state.auth.user
 });
 
-export default connect(
-  mapStateToProps,
-  { setAlert, register }
-)(Register);
+export default connect(mapStateToProps, { setAlert, register })(Register);

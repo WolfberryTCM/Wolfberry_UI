@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react';
+import React, { Fragment } from "react";
 
-const innerReviewCard = ({ review }) => {
+const InnerReviewCard = ({ review }) => {
   const { text, rating, time_created, user } = review;
   const { name } = user;
   return (
@@ -17,4 +17,4 @@ const innerReviewCard = ({ review }) => {
   );
 };
 
-export default innerReviewCard;
+export default InnerReviewCard;

@@ -1,7 +1,8 @@
-import React from 'react';
+import React from "react";
 
-const innerBookDetail = () => {
+const InnerBookDetail = props => {
+  const { profile } = props.location;
   return <div>Detail</div>;
 };
 
-export default innerBookDetail;
+export default InnerBookDetail;

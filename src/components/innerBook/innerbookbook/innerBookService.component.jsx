@@ -1,15 +1,32 @@
 import React from "react";
+import { Button } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
-const innerBookService = props => {
+const useStyles = makeStyles(theme => ({
+  button: {
+    margin: theme.spacing(1)
+  }
+}));
+
+const InnerBookService = props => {
+  const classes = new useStyles();
+
   const { profile } = props.location;
   const { services } = profile;
   return (
-    <ul>
+    <div>
       {services.map((service, index) => (
-        <li key={index}>{service.title}</li>
+        <Button
+          variant="contained"
+          color="primary"
+          key={index}
+          className={classes.button}
+        >
+          {service.title}
+        </Button>
       ))}
-    </ul>
+    </div>
   );
 };
 
-export default innerBookService;
+export default InnerBookService;

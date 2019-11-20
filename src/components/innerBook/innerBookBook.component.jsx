@@ -1,11 +1,11 @@
 import React, { Fragment } from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import InnerBookService from "./innerbookbook/innerBookService.component";
-import InnerBookStaff from "./innerbookbook/innerBookStaff.component";
-import InnerBookDate from "./innerbookbook/innerBookDate.component";
-import InnerBookDetail from "./innerbookbook/innerBookDetail.component";
+import InnerBookService from "./innerbookbook/InnerBookService.component";
+import InnerBookStaff from "./innerbookbook/InnerBookStaff.component";
+import InnerBookDate from "./innerbookbook/InnerBookDate.component";
+import InnerBookDetail from "./innerbookbook/InnerBookDetail.component";
 
-const innerBookBook = props => {
+const InnerBookBook = props => {
   const { profile } = props.location;
 
   return (
@@ -88,4 +88,4 @@ const innerBookBook = props => {
   );
 };
 
-export default innerBookBook;
+export default InnerBookBook;

@@ -1,7 +1,7 @@
 import React from "react";
-import InnerReviewCard from "./innerReviewCard.component";
+import InnerReviewCard from "./InnerReviewCard.component";
 
-const innerBookReviews = props => {
+const InnerBookReviews = props => {
   const { profile } = props.location;
   const { reviews } = profile;
   return (
@@ -13,4 +13,4 @@ const innerBookReviews = props => {
   );
 };
 
-export default innerBookReviews;
+export default InnerBookReviews;

@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-const innerBookTop = ({ profile }) => {
+const InnerBookTop = ({ profile }) => {
   const { name, location, rating, review_count } = profile;
   return (
     <div>
@@ -13,4 +13,4 @@ const innerBookTop = ({ profile }) => {
   );
 };
 
-export default innerBookTop;
+export default InnerBookTop;

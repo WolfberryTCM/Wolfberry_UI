@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react';
+import React, { Fragment } from "react";
 
-const innerBookContact = props => {
+const InnerBookContact = props => {
   const { profile } = props.location;
   const { location, website } = profile;
   return (
@@ -14,4 +14,4 @@ const innerBookContact = props => {
   );
 };
 
-export default innerBookContact;
+export default InnerBookContact;

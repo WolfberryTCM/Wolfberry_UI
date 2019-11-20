@@ -1,21 +1,22 @@
-import React, { Fragment, useState } from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { addStaff, deleteStaff } from '../../actions/profile';
+import React, { Fragment, useState } from "react";
+import { Link, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { addStaff, deleteStaff } from "../../actions/profile";
 
-import IconButton from '@material-ui/core/IconButton';
-import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from "@material-ui/core/IconButton";
+import DeleteIcon from "@material-ui/icons/Delete";
 
-const EditStaff = ({ profile, addStaff, deleteStaff, history }) => {
+const EditStaff = ({ profile, addStaff, deleteStaff }) => {
   const initialState = {
-    name: ''
+    name: "",
+    email: ""
   };
 
   const [formData, setFormData] = useState(initialState);
 
   const staffs = profile ? profile.staffs : [];
 
-  const { name } = formData;
+  const { name, email } = formData;
 
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -38,12 +39,13 @@ const EditStaff = ({ profile, addStaff, deleteStaff, history }) => {
               key={index}
               className="list-group-item"
               style={{
-                display: 'inline-flex',
-                justifyContent: 'space-around'
+                display: "inline-flex",
+                justifyContent: "space-around"
               }}
             >
               <p>{index + 1}</p>
               <p>{staff.name}</p>
+              <p>{staff.email}</p>
               <IconButton
                 aria-label="delete"
                 onClick={e => deleteStaff(staff._id)}
@@ -65,6 +67,16 @@ const EditStaff = ({ profile, addStaff, deleteStaff, history }) => {
             required
           />
         </div>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="* staff email"
+            name="email"
+            value={email}
+            onChange={e => onChange(e)}
+            required
+          />
+        </div>
         <input type="submit" className="btn btn-primary my-1" value="Add" />
         <Link className="btn btn-light my-1" to="/dashboard">
           Go Back
@@ -78,7 +90,6 @@ const mapStateToProps = state => ({
   profile: state.profile.profile
 });
 
-export default connect(
-  mapStateToProps,
-  { addStaff, deleteStaff }
-)(withRouter(EditStaff));
+export default connect(mapStateToProps, { addStaff, deleteStaff })(
+  withRouter(EditStaff)
+);
