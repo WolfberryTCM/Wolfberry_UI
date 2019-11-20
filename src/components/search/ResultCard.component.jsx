@@ -36,7 +36,10 @@ const ResultCard = ({ result, getBusinessDetail, getBusinessReviews }) => {
           <p className="card-text">rating:{rating}</p>
           <p className="card-text">{review_count} Reviews</p>
           <Link
-            to="/booking"
+            to={{
+              pathname: "/booking",
+              businessInfo: result
+            }}
             className="btn btn-primary"
             onClick={() => getDetails(alias)}
           >

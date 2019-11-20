@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react';
-import { connect } from 'react-redux';
+import React, { Fragment } from "react";
+import { connect } from "react-redux";
 
 const BookContact = ({ detail, loading }) => {
   const { display_phone, location, hours } = detail;
