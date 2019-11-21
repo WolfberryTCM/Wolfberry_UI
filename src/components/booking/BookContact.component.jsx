@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { connect } from "react-redux";
 
 const BookContact = ({ detail, loading }) => {
-  const { display_phone, location, hours } = detail;
+  const { display_phone, location } = detail;
   const { display_address } = location;
   return (
     <Fragment>

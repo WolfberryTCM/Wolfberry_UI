@@ -40,4 +40,12 @@ export const GET_CURRENT_LOCATION = 'GET_CURRENT_LOCATION';
 
 export const CREATE_APPOINTMENT = 'CREATE_APPOINTMENT';
 
+export const SET_SERVICE = 'SET_SERVICE';
+
+export const SET_STAFF = 'SET_STAFF';
+
+export const SET_DATE_TIME = 'SET_DATE_TIME';
+
+
+
 
