@@ -4,4 +4,6 @@ import auth from './auth';
 import profile from './profile';
 import search from './search';
 import book from './book';
-export default combineReducers({ alert, auth, profile, search, book });
+import appointment from './appointment';
+import appointments from './appointments'
+export default combineReducers({ alert, auth, profile, search, book,appointment,appointments });

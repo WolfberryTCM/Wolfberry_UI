@@ -5,8 +5,12 @@ import InnerBookStaff from "./innerbookbook/InnerBookStaff.component";
 import InnerBookDate from "./innerbookbook/InnerBookDate.component";
 import InnerBookDetail from "./innerbookbook/InnerBookDetail.component";
 
+// redux
+import { connect } from "react-redux";
+
 const InnerBookBook = props => {
   const { profile } = props.location;
+  const { appointment } = props;
 
   return (
     <Fragment>
@@ -22,33 +26,40 @@ const InnerBookBook = props => {
                   profile: profile
                 }}
               >
-                Service
+                {appointment.title ? appointment.title : "Service"}
               </Link>
             </li>
             <li className="nav-item">
               <Link
+                style={{ pointerEvents: appointment.title ? "auto" : "none" }}
                 className="nav-link"
                 to={{
                   pathname: "/innerbookbook/staff",
                   profile: profile
                 }}
               >
-                Staff
+                {appointment.staff ? appointment.staff : "Staff"}
               </Link>
             </li>
             <li className="nav-item">
               <Link
+                style={{ pointerEvents: appointment.staff ? "auto" : "none" }}
                 className="nav-link"
                 to={{
                   pathname: "/innerbookbook/date",
                   profile: profile
                 }}
               >
-                Date&Time
+                {appointment.date ? appointment.date : "Date"} @
+                {appointment.time ? appointment.time : "Time"}
               </Link>
             </li>
             <li className="nav-item">
               <Link
+                style={{
+                  pointerEvents:
+                    appointment.date && appointment.time ? "auto" : "none"
+                }}
                 className="nav-link"
                 to={{
                   pathname: "/innerbookbook/detail",
@@ -88,4 +99,8 @@ const InnerBookBook = props => {
   );
 };
 
-export default InnerBookBook;
+const mapStateToProps = state => ({
+  appointment: state.appointment
+});
+
+export default connect(mapStateToProps)(InnerBookBook);

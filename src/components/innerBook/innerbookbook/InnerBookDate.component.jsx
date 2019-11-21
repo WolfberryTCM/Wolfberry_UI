@@ -1,8 +1,13 @@
 import React, { Fragment, useState } from "react";
 import "flatpickr/dist/themes/material_green.css";
 import Flatpickr from "react-flatpickr";
+import { Link } from "react-router-dom";
 import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+
+// redux
+import { connect } from "react-redux";
+import { setDateAndTime } from "../../../actions/appointment";
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -14,6 +19,8 @@ const InnerBookDate = props => {
   const classes = useStyles();
 
   const { profile } = props.location;
+
+  const { setDateAndTime } = props;
 
   const { hours } = profile;
   const { isInitial, open } = hours;
@@ -38,6 +45,13 @@ const InnerBookDate = props => {
     ]
   };
 
+  const onSubmit = (e, time) => {
+    e.preventDefault();
+    const link = document.querySelector(".directToDetail");
+    setDateAndTime(date.toString().slice(0, 15), time + ":00");
+    link.click();
+  };
+
   const getAvailableHours = date => {
     let weekday = date ? new Date(date).getDay() : new Date().getDay();
     if (weekday === 0) {
@@ -45,32 +59,36 @@ const InnerBookDate = props => {
     } else {
       weekday -= 1;
     }
-    console.log(open[weekday].day);
-    console.log(open[weekday].start);
-    console.log(open[weekday].end);
 
     const start = parseInt(open[weekday].start);
     const end = parseInt(open[weekday].end);
 
-    console.log("start", start);
-    console.log("end", end);
     let slots = [];
     for (let i = start; i < end; i++) {
       slots.push(i);
     }
-    console.log(slots);
 
     let timeSlots = (
       <div>
         {slots.map((slot, index) => (
-          <Button
-            key={index}
-            variant="contained"
-            color="primary"
-            className={classes.button}
-          >
-            {slot < 10 ? "0" + slot + ":00" : slot + ":00"}
-          </Button>
+          <div key={index}>
+            <Link
+              className="directToDetail"
+              to={{
+                pathname: "/innerbookbook/detail",
+                profile: profile
+              }}
+            >
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.button}
+                onClick={e => onSubmit(e, slot)}
+              >
+                {slot < 10 ? "0" + slot + ":00" : slot + ":00"}
+              </Button>
+            </Link>
+          </div>
         ))}
       </div>
     );
@@ -95,4 +113,4 @@ const InnerBookDate = props => {
   );
 };
 
-export default InnerBookDate;
+export default connect(null, { setDateAndTime })(InnerBookDate);
