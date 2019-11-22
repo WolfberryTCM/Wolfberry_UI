@@ -1,7 +1,8 @@
 import {
   SET_SERVICE,
   SET_STAFF,
-  SET_DATE_TIME
+  SET_DATE_TIME,
+  RESET_APPOINTMENT
 } from '../actions/types'
 
 const initialState = {
@@ -19,6 +20,10 @@ export default function(state = initialState,action) {
   const {type,payload} = action;
 
   switch(type) {
+    case RESET_APPOINTMENT :
+      return {
+        ...initialState
+      }
     case SET_SERVICE :
       return {
         ...state,

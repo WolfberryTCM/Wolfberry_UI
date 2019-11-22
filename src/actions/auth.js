@@ -54,9 +54,8 @@ export const register = ({ name, email,isDoctor, password }) => async dispatch =
 
     dispatch(loadUser());
   } catch (err) {
-    const errors = err.response.data.errors;
-
-    if (errors) {
+    if (err.response) {
+      const errors = err.response.data.errors;
       errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
     }
     dispatch({

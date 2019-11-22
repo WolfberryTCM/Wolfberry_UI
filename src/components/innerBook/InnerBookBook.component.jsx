@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import InnerBookService from "./innerbookbook/InnerBookService.component";
 import InnerBookStaff from "./innerbookbook/InnerBookStaff.component";
@@ -7,10 +7,17 @@ import InnerBookDetail from "./innerbookbook/InnerBookDetail.component";
 
 // redux
 import { connect } from "react-redux";
+import { resetAppointment } from "../../actions/appointment";
 
 const InnerBookBook = props => {
   const { profile } = props.location;
-  const { appointment } = props;
+  const { appointment, resetAppointment } = props;
+
+  useEffect(() => {
+    return () => {
+      resetAppointment();
+    };
+  }, []);
 
   return (
     <Fragment>
@@ -103,4 +110,4 @@ const mapStateToProps = state => ({
   appointment: state.appointment
 });
 
-export default connect(mapStateToProps)(InnerBookBook);
+export default connect(mapStateToProps, { resetAppointment })(InnerBookBook);

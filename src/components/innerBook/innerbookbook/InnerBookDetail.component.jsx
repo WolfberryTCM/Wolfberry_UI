@@ -49,6 +49,7 @@ const InnerBookDetail = ({
     }
     createAppointment({
       name,
+      email,
       phone,
       staff,
       staff_email,

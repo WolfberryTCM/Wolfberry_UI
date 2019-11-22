@@ -2,9 +2,16 @@ import axios from 'axios';
 
 import {setAlert} from './alert'
 
-import { CREATE_APPOINTMENT,SET_SERVICE,SET_STAFF,SET_DATE_TIME } from './types';
+import { CREATE_APPOINTMENT,GET_ALL_APPOINTMENTS,SET_SERVICE,SET_STAFF,SET_DATE_TIME,RESET_APPOINTMENT} from './types';
 
 const url_base = 'https://agile-badlands-98142.herokuapp.com';
+
+// Reset appointment
+export const resetAppointment = () => dispatch => {
+  dispatch({
+    type: RESET_APPOINTMENT
+  })
+}
 
 // Set service
 export const setService = ({title,duration,price}) => dispatch => {
@@ -56,5 +63,19 @@ export const createAppointment = formData => async dispatch => {
 
   } catch(err) {
     console.log(err);
+  }
+}
+
+// Get appointments
+export const getAllAppointments = () => async dispatch => {
+  try {
+    const res = await axios.get(`${url_base}/api/appointment`);
+
+    dispatch({
+      type: GET_ALL_APPOINTMENTS,
+      payload: res.data
+    })
+  } catch (err) {
+    console.log(err)
   }
 }
