@@ -53,7 +53,7 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
   return (
     <nav className="navbar bg-dark">
       <h1>
-        <Link to="/">TCMagiC</Link>
+        <Link to="/">WolfBerry</Link>
       </h1>
       {!loading && (
         <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>

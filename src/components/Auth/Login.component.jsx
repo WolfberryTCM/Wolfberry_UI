@@ -1,13 +1,20 @@
-import React, { Fragment, useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { login } from '../../actions/auth';
+import React, { Fragment, useState } from "react";
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { login, googleLogin } from "../../actions/auth";
 
-const Login = ({ login, auth: { isAuthenticated, loading, user } }) => {
+// Google Login
+import GoogleLogin from "react-google-login";
+
+const Login = ({
+  login,
+  googleLogin,
+  auth: { isAuthenticated, loading, user }
+}) => {
   const [formData, setFormData] = useState({
-    email: '',
-    password: ''
+    email: "",
+    password: ""
   });
 
   const { email, password } = formData;
@@ -31,6 +38,21 @@ const Login = ({ login, auth: { isAuthenticated, loading, user } }) => {
   // if (isAuthenticated && !loading && !user.isDoctor) {
   //   return <Redirect to="/search" />;
   // }
+
+  const responseGoogle = response => {
+    console.log(response);
+    console.log(response.Zi.access_token);
+    console.log(response.tokenId);
+    googleLogin(response.tokenId);
+  };
+
+  const onSignIn = googleUser => {
+    var profile = googleUser.getBasicProfile();
+    console.log("ID: " + profile.getId()); // Do not send to your backend! Use an ID token instead.
+    console.log("Name: " + profile.getName());
+    console.log("Image URL: " + profile.getImageUrl());
+    console.log("Email: " + profile.getEmail()); // This is null if the 'email' scope is not present.
+  };
 
   return (
     <Fragment>
@@ -62,6 +84,20 @@ const Login = ({ login, auth: { isAuthenticated, loading, user } }) => {
         </div>
         <input type="submit" className="btn btn-primary" value="Login" />
       </form>
+
+      <form className="form">
+        <div className="form-group">
+          <GoogleLogin
+            clientId="1037712764162-3aivd1te1aa8bgnvhfhqsm0s2s0cch9a.apps.googleusercontent.com"
+            buttonText="Google"
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+            className="btn btn-outline-danger"
+          />
+        </div>
+        <div className="g-signin2" data-onsuccess={onSignIn}></div>
+      </form>
+
       <p className="my-1">
         Don't have an account? <Link to="/register">Sign Up</Link>
       </p>
@@ -77,7 +113,4 @@ Login.propTypes = {
 const mapStateToProps = state => ({
   auth: state.auth
 });
-export default connect(
-  mapStateToProps,
-  { login }
-)(Login);
+export default connect(mapStateToProps, { login, googleLogin })(Login);
