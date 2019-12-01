@@ -1,19 +1,18 @@
-import React, { useState, useEffect, Fragment } from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { createProfile, getCurrentProfile } from '../../actions/profile';
+import React, { useState, useEffect, Fragment } from "react";
+import { Link, withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { createProfile, getCurrentProfile } from "../../actions/profile";
 
 const CreateProfile = ({ createProfile, getCurrentProfile, history }) => {
   const [formData, setFormData] = useState({
-    name: '',
-    business_size: '',
-    website: '',
-    location: '',
-    services: ''
+    name: "",
+    business_size: "",
+    website: "",
+    location: ""
   });
 
-  const { name, business_size, website, location, services } = formData;
+  const { name, business_size, website, location } = formData;
 
   const onChange = e =>
     setFormData({
@@ -78,16 +77,7 @@ const CreateProfile = ({ createProfile, getCurrentProfile, history }) => {
             name="location"
             value={location}
             onChange={e => onChange(e)}
-          ></input>{' '}
-        </div>
-        <div className="form-group">
-          <input
-            type="text"
-            placeholder="Services"
-            name="services"
-            value={services}
-            onChange={e => onChange(e)}
-          ></input>
+          ></input>{" "}
         </div>
         <input type="submit" className="btn btn-primary my-1" />
         <Link className="btn btn-light my-1" to="/dashboard">
@@ -107,7 +97,6 @@ const mapStateToProps = state => ({
   profile: state.profile
 });
 
-export default connect(
-  mapStateToProps,
-  { createProfile, getCurrentProfile }
-)(withRouter(CreateProfile)); // Pass in history
+export default connect(mapStateToProps, { createProfile, getCurrentProfile })(
+  withRouter(CreateProfile)
+); // Pass in history
