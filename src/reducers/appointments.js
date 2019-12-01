@@ -1,5 +1,6 @@
 import {
-  CREATE_APPOINTMENT
+  CREATE_APPOINTMENT,
+  GET_ALL_APPOINTMENTS
 } from '../actions/types'
 
 const initialState = {
@@ -16,9 +17,15 @@ export default function(state = initialState,action) {
     case CREATE_APPOINTMENT :
       return {
         ...state,
-        posts:[payload,...state.appointments],
+        appointments:[payload,...state.appointments],
         loading:false
       };
+    case GET_ALL_APPOINTMENTS :
+      return {
+        ...state,
+        appointments:payload,
+        loading:false
+      }
       default: 
       return state;
   }

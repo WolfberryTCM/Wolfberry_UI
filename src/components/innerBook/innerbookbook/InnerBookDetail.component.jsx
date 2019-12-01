@@ -12,9 +12,14 @@ const InnerBookDetail = ({
   appointment,
   user
 }) => {
+  const { method } = user;
   const [formData, setFormData] = useState({
     name: user ? user.name : "",
-    email: user ? user.email : "",
+    email: user
+      ? method === "local"
+        ? user.local.email
+        : user.google.email
+      : "",
     phone: ""
   });
 
@@ -49,6 +54,7 @@ const InnerBookDetail = ({
     }
     createAppointment({
       name,
+      email,
       phone,
       staff,
       staff_email,

@@ -54,9 +54,8 @@ export const register = ({ name, email,isDoctor, password }) => async dispatch =
 
     dispatch(loadUser());
   } catch (err) {
-    const errors = err.response.data.errors;
-
-    if (errors) {
+    if (err.response) {
+      const errors = err.response.data.errors;
       errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
     }
     dispatch({
@@ -64,6 +63,39 @@ export const register = ({ name, email,isDoctor, password }) => async dispatch =
     });
   }
 };
+
+// Google Login 
+export const googleLogin = (access_token) => async dispatch => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
+
+  const body = JSON.stringify({access_token});
+
+  try {
+    const res = await axios.post(`${auth_url}/api/auth/google`, body, config);
+
+    dispatch({
+      type: LOGIN_SUCCESS,
+      payload: res.data
+    });
+
+    dispatch(loadUser());
+  } catch (err) {
+    if(err.response) {
+      const errors = err.response.data.errors;
+      if (errors) {
+        errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+      }
+    }
+  
+    dispatch({
+      type: LOGIN_FAIL
+    });
+  }
+}
 
 // Login User
 export const login = ( email, password ) => async dispatch => {

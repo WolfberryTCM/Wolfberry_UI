@@ -31,11 +31,11 @@ const Register = ({ setAlert, register, isAuthenticated, user }) => {
     }
   };
 
-  if (isAuthenticated && user.isDoctor) {
+  if (isAuthenticated && isDoctor) {
     return <Redirect to="/dashboard" />;
   }
 
-  if (isAuthenticated && !user.isDoctor) {
+  if (isAuthenticated && !isDoctor) {
     return <Redirect to="/search" />;
   }
 
